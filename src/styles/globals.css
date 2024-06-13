@@ -2,32 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles/global.css */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-color: #6ee7b7; /* emerald */
+  --background-color: #2e2e2e;
+  --primary-text-color: #e0e0e0;
+  --secondary-text-color: #b0b0b0;
+  --border-color: #444444;
+  --border-radius: 6px;
+  --font-family: "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Dark Theme */
+[data-theme="dark"] {
+  --primary-color: #6ee7b7; /* emerald */
+  --background-color: #2e2e2e;
+  --primary-text-color: #e0e0e0;
+  --font-family: "Inter", sans-serif;
 }
 
+[data-theme="light"] {
+  --primary-color: #6ee7b7; /* emerald */
+  --background-color: #fff;
+  --primary-text-color: #e0e0e0;
+  --font-family: "Inter", sans-serif;
+}
+
+/* Apply the variables */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  font-family: var(--font-family);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+  .text-primary {
+    color: var(--primary-color);
+  }
+  .bg-background {
+    background-color: var(--background-color);
+  }
+  .text-background {
+    color: var(--background-color);
+  }
+  .text-primary-text {
+    color: var(--primary-text-color);
+  }
+  .text-secondary-text {
+    color: var(--secondary-text-color);
+  }
+  .border-custom {
+    border-color: var(--border-color);
+  }
+  .rounded-custom {
+    border-radius: var(--border-radius);
+  }
+
+  /* Add more utilities for any new variables */
+}
+
+* {
+  /* Helps transition from light to dark mode, easier on the eyes*/
+  @apply transition-colors duration-200;
 }
