@@ -5,7 +5,7 @@
 /* styles/global.css */
 :root {
   --primary-color: #6ee7b7; /* emerald */
-  --background-color: #2e2e2e;
+  --background-color: #181818;
   --primary-text-color: #e0e0e0;
   --secondary-text-color: #b0b0b0;
   --border-color: #444444;
@@ -63,7 +63,12 @@ body {
   .rounded-custom {
     border-radius: var(--border-radius);
   }
-
+  .text-secondary {
+    fill: var(--secondary-text-color);
+  }
+  .stroke-custom {
+    stroke: var(--secondary-text-color);
+  }
   /* Add more utilities for any new variables */
 }
 
