@@ -6,6 +6,7 @@ import {
   SocialMediaLinks,
   ListOfExperiences,
 } from "@/components";
+import { AreaChartHero } from "@/components/areachart";
 
 export default function Home() {
   return (
@@ -15,8 +16,7 @@ export default function Home() {
         <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
           <div>
             <Avatar />
-            {/* Area Chart #1 <div className="mt-8 w-[514px] p-4 border-2 border-custom rounded-custom flex flex-col items-center gap-3"><p>Area Chart #1</p></div>*/}
-            {/* Area Chart #2 <div className="mt-8 w-[514px] p-4 border-2 border-custom rounded-custom flex flex-col items-center gap-3"><p>Area Chart #2</p></div>*/}
+            <AreaChartHero />
             <Menu />
           </div>
           <SocialMediaLinks />
