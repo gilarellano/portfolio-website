@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Avatar = () => {
   return (
-    <div className="w-full flex flex-row justify-start gap-4 items-center">
+    <div className="mb-8 w-full flex flex-row justify-start gap-4 items-center">
       {/* Circular Picture */}
       <div className="border-custom w-24 h-24 rounded-full border-2 flex items-center justify-center overflow-hidden flex-shrink-0">
         <Image
