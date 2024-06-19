@@ -10,11 +10,23 @@ import {
 const SocialMediaLinks = () => {
   return (
     <div className="flex mt-8 gap-5 items-center">
-      <GithubIcon className="text-secondary w-6 h-6 shrink-0" />
-      <LinkedInIcon className="text-secondary w-6 h-6 shrink-0" />
-      <XIcon className="text-secondary w-6 h-6 shrink-0" />
-      <InstagramIcon className="text-secondary w-6 h-6 shrink-0" />
-      <SourceCodeIcon className="stroke-custom stroke-2 w-6 h-6 shrink-0" />
+      <a href="https://github.com/gilarellano" target="_blank">
+        <GithubIcon className="fill-secondary hover:fill-primary w-6 h-6 shrink-0" />
+      </a>
+      <a href="https://www.linkedin.com/in/gilbertoarellano/" target="_blank">
+        <LinkedInIcon className="fill-secondary hover:fill-primary w-6 h-6 shrink-0" />
+      </a>
+
+      {/*<a href="twitter-soon-to-create?" target="_blank">
+        <XIcon className="fill-secondary hover:fill-primary w-6 h-6 shrink-0" />
+      </a>
+      <a href="ig-coming-soon??" target="_blank">
+        <InstagramIcon className="fill-secondary hover:fill-primary w-6 h-6 shrink-0" />
+      </a>*/}
+
+      <a href="https://github.com/gilarellano/portfolio-website" target="_blank">
+        <SourceCodeIcon className="stroke-secondary hover:stroke-primary stroke-2 w-6 h-6 shrink-0" />
+      </a>
     </div>
   );
 };
