@@ -63,16 +63,21 @@ body {
   .rounded-custom {
     border-radius: var(--border-radius);
   }
-  .text-secondary {
+  .fill-primary{
+    fill: var(--primary-color);
+  }
+  .fill-secondary {
     fill: var(--secondary-text-color);
   }
-  .stroke-custom {
+  .stroke-secondary{
     stroke: var(--secondary-text-color);
+  }
+  .stroke-primary {
+    stroke: var(--primary-color);
   }
   /* Add more utilities for any new variables */
 }
 
 * {
   /* Helps transition from light to dark mode, easier on the eyes*/
-  @apply transition-colors duration-200;
 }
