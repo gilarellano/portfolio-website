@@ -21,7 +21,8 @@
     "react-dom": "^18",
     "recharts": "^2.12.7",
     "tailwind-merge": "^2.3.0",
-    "tailwind-variants": "^0.2.1"
+    "tailwind-variants": "^0.2.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
