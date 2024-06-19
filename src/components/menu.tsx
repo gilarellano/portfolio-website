@@ -7,42 +7,41 @@ import {
 } from "@/assets/icons";
 
 const Menu = () => {
-  return (
-    <nav className="nav hidden lg:block">
-      <div className="mt-8 flex flex-col p-4 items-start border-2 border-custom rounded-custom gap-4 w-fit h-fit">
-        <div className="flex flex-row gap-2 items-center">
-          <BioIcon className="w-6 h-6 stroke-custom shrink-0" />
-          <a href="#bio" className="text-secondary-text text-base">
-            Bio
-          </a>
-        </div>
+    return (
+      <nav className="nav hidden lg:block">
+        <ul role="list" className="bg-[#2E2E2E] bg-opacity-10 mt-8 p-1.5 flex flex-col border-2 border-custom rounded-custom w-fit h-fit">
+            <li className="group/item">
+                <a href="#bio" className="flex flex-row gap-1.5 items-center rounded-md py-1.5 px-3 hover:bg-green-950">
+                    <BioIcon className="w-5 h-5 stroke-secondary group-hover/item:stroke-primary shrink-0" />
+                    <p className="text-secondary-text text-base group-hover/item:text-primary">Bio</p>
+                </a>
+            </li>
 
-        <div className="flex flex-row gap-2 items-center">
-          <ProjectIcon className="w-6 h-6 stroke-custom shrink-0" />
-          <a href="#projects" className="text-secondary-text text-base">
-            Projects
-          </a>
-        </div>
+            <li className="group/item">
+                <a href="#projects" className="flex flex-row rounded-md gap-1.5 items-center py-1.5 px-3 hover:bg-green-950">
+                    <ProjectIcon className="w-5 h-5 stroke-secondary group-hover/item:stroke-primary shrink-0" />
+                    <p className="text-secondary-text text-base group-hover/item:text-primary">Projects</p>
+                </a>
+            </li>
 
-        <div className="flex flex-row gap-2 items-center">
-          <ExperienceIcon className="w-6 h-6 stroke-custom shrink-0" />
-          <a href="#experience" className="text-secondary-text text-base">
-            Experience
-          </a>
-        </div>
+            <li className="group/item">
+                <a href="#experiences" className="flex flex-row rounded-md gap-1.5 items-center py-1.5 px-3 hover:bg-green-950">
+                    <ExperienceIcon className="w-5 h-5 stroke-secondary group-hover/item:stroke-primary shrink-0" />
+                    <p className="text-secondary-text text-base group-hover/item:text-primary">Experience</p>
+                </a>
+            </li>
 
-        <div className="flex flex-row gap-2 items-center">
-          <ResumeIcon className="w-6 h-6 stroke-custom shrink-0" />
-          <a
-            href="/ArellanoGilbertoResume.pdf"
-            className="text-secondary-text text-base"
-          >
-            Resume
-          </a>
-        </div>
-      </div>
-    </nav>
-  );
-};
+            <li className="group/item">
+                <a href="/ArellanoGilbertoResume.pdf" target="_blank" className="flex flex-row rounded-md gap-1.5 items-center py-1.5 px-3 hover:bg-green-950">
+                    <ResumeIcon className="w-5 h-5 stroke-secondary group-hover/item:stroke-primary shrink-0" />
+                    <p className="text-secondary-text text-base group-hover/item:text-primary">Resume</p>
+                </a>
+            </li>
+
+        </ul>
+      </nav>
+    );
+  };
+  
 
 export default Menu;
