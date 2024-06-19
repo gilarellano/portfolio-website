@@ -5,8 +5,8 @@ import {
   Menu,
   SocialMediaLinks,
   ListOfExperiences,
+  AreaChartHero,
 } from "@/components";
-import { AreaChartHero } from "@/components/areachart";
 
 export default function Home() {
   return (
