@@ -10,6 +10,7 @@
   --secondary-text-color: #b0b0b0;
   --border-color: #444444;
   --border-radius: 6px;
+  --border-width: 1.5px;
   --font-family: "Inter", sans-serif;
 }
 
@@ -59,6 +60,9 @@ body {
   }
   .border-custom {
     border-color: var(--border-color);
+  }
+  .border-custom-width{
+    border-width: var(--border-width);
   }
   .rounded-custom {
     border-radius: var(--border-radius);
