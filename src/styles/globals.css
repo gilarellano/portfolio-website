@@ -82,6 +82,14 @@ body {
   /* Add more utilities for any new variables */
 }
 
-* {
-  /* Helps transition from light to dark mode, easier on the eyes*/
+/* styles/globals.css or any of your global CSS files */
+
+html {
+  scroll-behavior: smooth;
 }
+
+/* {
+   Helps transition from light to dark mode, easier on the eyes
+}*/
+
+/* styles/globals.css or any of your global CSS files */
