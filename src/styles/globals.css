@@ -61,19 +61,19 @@ body {
   .border-custom {
     border-color: var(--border-color);
   }
-  .border-custom-width{
+  .border-custom-width {
     border-width: var(--border-width);
   }
   .rounded-custom {
     border-radius: var(--border-radius);
   }
-  .fill-primary{
+  .fill-primary {
     fill: var(--primary-color);
   }
   .fill-secondary {
     fill: var(--secondary-text-color);
   }
-  .stroke-secondary{
+  .stroke-secondary {
     stroke: var(--secondary-text-color);
   }
   .stroke-primary {

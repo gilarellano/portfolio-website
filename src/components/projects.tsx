@@ -18,7 +18,14 @@ const projects: Project[] = [
     title: "Academic Advising Tool",
     description:
       "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
-    technologies: ["AWS", "Typescript", "React", "Next.js", "Jest", "SonarQube"],
+    technologies: [
+      "AWS",
+      "Typescript",
+      "React",
+      "Next.js",
+      "Jest",
+      "SonarQube",
+    ],
   },
   {
     href: "#",
@@ -76,7 +83,9 @@ const ListOfProjects: React.FC = () => {
                   <h3 className="text-primary-text text-2xl lg:text-xl font-bold group-hover:text-primary">
                     {project.title}
                   </h3>
-                  <p className="text-secondary-text text-sm lg:text-xs">{project.description}</p>
+                  <p className="text-secondary-text text-sm lg:text-xs">
+                    {project.description}
+                  </p>
                   <ul className="flex flex-grid flex-wrap pt-2 gap-3 text-primary text-sm lg:text-xs font-extralight *:rounded-full *:border *:border-green-950 *:bg-green-950 *:px-3 *:py-1">
                     {project.technologies.map((tech, techIndex) => (
                       <li key={techIndex}>{tech}</li>

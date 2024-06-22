@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
 import {
@@ -11,11 +11,11 @@ import {
   AreaChartHero,
 } from "@/components";
 
-import useIntersectionObserver from '@/lib/useIntersectionObserver';
+import useIntersectionObserver from "@/lib/useIntersectionObserver";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<string>('');
-  const [activeItem, setActiveItem] = useState<string>('');
+  const [activeSection, setActiveSection] = useState<string>("");
+  const [activeItem, setActiveItem] = useState<string>("");
 
   // Changes the URL based on the section
   useIntersectionObserver(setActiveSection);
@@ -28,10 +28,10 @@ export default function Home() {
       setActiveItem(window.location.hash);
     };
 
-    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener("hashchange", handleHashChange);
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener("hashchange", handleHashChange);
     };
   }, []);
 
@@ -52,7 +52,7 @@ export default function Home() {
           <div>
             <Avatar />
             <AreaChartHero />
-            <Menu activeItem={activeItem} handleClick={handleClick}/>
+            <Menu activeItem={activeItem} handleClick={handleClick} />
           </div>
           <SocialMediaLinks />
         </div>

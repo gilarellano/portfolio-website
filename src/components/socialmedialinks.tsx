@@ -24,7 +24,10 @@ const SocialMediaLinks = () => {
         <InstagramIcon className="fill-secondary hover:fill-primary w-6 h-6 shrink-0" />
       </a>*/}
 
-      <a href="https://github.com/gilarellano/portfolio-website" target="_blank">
+      <a
+        href="https://github.com/gilarellano/portfolio-website"
+        target="_blank"
+      >
         <SourceCodeIcon className="stroke-secondary hover:stroke-primary stroke-2 w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
     </div>
