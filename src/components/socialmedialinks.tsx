@@ -11,10 +11,10 @@ const SocialMediaLinks = () => {
   return (
     <div className="flex mt-8 gap-5 items-center">
       <a href="https://github.com/gilarellano" target="_blank">
-        <GithubIcon className="fill-secondary hover:fill-primary w-6 h-6 shrink-0" />
+        <GithubIcon className="fill-secondary hover:fill-primary w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
       <a href="https://www.linkedin.com/in/gilbertoarellano/" target="_blank">
-        <LinkedInIcon className="fill-secondary hover:fill-primary w-6 h-6 shrink-0" />
+        <LinkedInIcon className="fill-secondary hover:fill-primary w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
 
       {/*<a href="twitter-soon-to-create?" target="_blank">
@@ -25,7 +25,7 @@ const SocialMediaLinks = () => {
       </a>*/}
 
       <a href="https://github.com/gilarellano/portfolio-website" target="_blank">
-        <SourceCodeIcon className="stroke-secondary hover:stroke-primary stroke-2 w-6 h-6 shrink-0" />
+        <SourceCodeIcon className="stroke-secondary hover:stroke-primary stroke-2 w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
     </div>
   );
