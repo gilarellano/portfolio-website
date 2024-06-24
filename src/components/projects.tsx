@@ -70,23 +70,23 @@ const ListOfProjects: React.FC = () => {
         {projects.map((project, index) => (
           <a key={index} href={project.href}>
             <li className="group relative mb-12 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50">
-              <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-slate-800/50 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
+              <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-neutral-700/20 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
               <div className="relative z-10 flex flex-row gap-x-4">
                 <Image
                   src={project.imgSrc}
                   alt={project.imgAlt}
                   width={86}
                   height={68}
-                  className="mt-1 shrink-0 w-[86px] h-[68px] border-custom-width border-custom rounded-custom group-hover:border-emerald-300"
+                  className="mt-1 shrink-0 w-[86px] h-[68px] rounded-custom group-hover:border-emerald-300"
                 />
                 <div className="flex flex-col gap-y-2">
-                  <h3 className="text-primary-text text-2xl lg:text-xl font-bold group-hover:text-primary">
+                  <h3 className="text-primary-text text-2xl leading-tight lg:text-lg font-bold group-hover:text-emerald-400">
                     {project.title}
                   </h3>
-                  <p className="text-secondary-text text-sm lg:text-xs">
+                  <p className="leading-normal text-secondary-text text-sm lg:text-sm">
                     {project.description}
                   </p>
-                  <ul className="flex flex-grid flex-wrap pt-2 gap-3 text-primary text-sm lg:text-xs font-extralight *:rounded-full *:border *:border-green-950 *:bg-green-950 *:px-3 *:py-1">
+                  <ul className="flex flex-grid flex-wrap pt-2 gap-3 text-primary text-sm lg:text-xs font-extralight *:rounded-full *:bg-emerald-600/20 *:px-3 *:py-1">
                     {project.technologies.map((tech, techIndex) => (
                       <li key={techIndex}>{tech}</li>
                     ))}

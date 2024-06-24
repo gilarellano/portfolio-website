@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import MouseClickIcon from "../assets/icons/mouse_click.svg";
-import TrophyIcon from "../assets/icons/trophy_icon.svg";
+import {MouseClickIcon, ClockIcon} from "@/assets/icons"
 import { AreaChart } from "@tremor/react";
 
 interface ChartData {
@@ -32,7 +31,7 @@ const chartdata = [
 ];
 
 const valueFormatter = (number: number): string => {
-  return `${number.toFixed(2)} s`;
+  return `${number.toFixed(2)}s`;
 };
 
 const customTooltip = (props: CustomTooltipProps) => {
@@ -60,33 +59,38 @@ const customTooltip = (props: CustomTooltipProps) => {
 
 export default function AreaChartHero() {
   return (
-    <div className="lg:max-w-[490px]">
+    <div className="lg:max-w-[400px]">
+      {/*</div><div className="lg:max-w-[490px]">*/}
+
       {/* Weekly Visitor Chart */}
-      <div className="bg-[#2E2E2E] bg-opacity-10 mb-8 p-4 border-custom-width border-custom rounded-custom">
-        <div className="flex flex-row justify-between items-center">
+      <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
+        {/* Header Information */}
+        <div className="flex flex-row justify-between w-full px-0.5">
           <span className="flex flex-row gap-x-1 items-center">
-            <h2 className="text-base md:text-lg lg:text-base text-secondary-text">
+            <h2 className="text-base md:text-lg lg:text-sm text-secondary-text">
               Total Visitors:
             </h2>
-            <p className="text-base md:text-lg lg:text-base font-bold text-primary">
+            <p className="text-base md:text-lg lg:text-sm font-bold text-primary-text">
               231
             </p>
           </span>
-          <div className="flex flex-row items-center gap-x-1 py-1 px-2 border rounded-custom text-primary bg-green-950 border-green-950">
+          <div className="flex flex-row items-center gap-x-1 py-1 px-2 text-secondary-text rounded-custom">
+            {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
             <MouseClickIcon className="w-[16px] h-[16px] md:w-[20px] md:h-[20px] lg:w-[18px] lg:h-[18px]" />
-            <p className="text-xs md:text-sm lg:text-xs">
-              You&apos;re Visitor #<b>32</b>
+            <p className="text-xs md:text-sm lg:text-sm">
+              You&apos;re Visitor <b className="text-primary">#32</b>
             </p>
           </div>
         </div>
+
         <AreaChart
-          className="h-[80px] mt-3"
+          className="h-[80px] mt-3 w-full max-w-lg"
           data={chartdata}
           index="date"
           categories={["Visitors"]}
           colors={["emerald"]}
           showLegend={false}
-          yAxisWidth={60}
+          yAxisWidth={30}
           onValueChange={(v) => console.log(v)}
           showAnimation={true}
           animationDuration={900}
@@ -96,20 +100,21 @@ export default function AreaChartHero() {
       </div>
 
       {/* Load Time Chart */}
-      <div className="bg-[#2E2E2E] bg-opacity-10 p-4 border-custom-width border-custom rounded-custom">
-        <div className="flex flex-row justify-between items-center">
+      <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
+        <div className="flex flex-row justify-between w-full px-0.5">
           <span className="flex flex-row gap-x-1 items-center">
-            <h2 className="text-base md:text-lg lg:text-base text-secondary-text">
-              Page Load Time:
+            <h2 className="text-base md:text-lg lg:text-sm text-secondary-text">
+              Avg. Page Load Time:
             </h2>
-            <p className="text-base md:text-lg lg:text-base font-bold text-primary">
-              1.23 s
+            <p className="text-base md:text-lg lg:text-sm font-bold text-primary-text">
+              1.23s
             </p>
           </span>
-          <div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 border rounded-custom text-primary bg-green-950 border-green-950">
-            <TrophyIcon className="w-[16px] h-[16px]lg:w-[14px] lg:h-[14px]" />
-            <p className="text-xs md:text-sm lg:text-xs">
-              Rank: <b>Top 10.24</b>%
+          <div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">
+            {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
+            <ClockIcon className="w-[16px] h-[16px]lg:w-[14px] lg:h-[14px]" />
+            <p className="text-xs md:text-sm lg:text-sm">
+              Your Time: <b className="text-primary">1.24s</b>
             </p>
           </div>
         </div>
@@ -121,7 +126,7 @@ export default function AreaChartHero() {
           valueFormatter={valueFormatter}
           colors={["emerald"]}
           showLegend={false}
-          yAxisWidth={60}
+          yAxisWidth={45}
           onValueChange={(v) => console.log(v)}
           showAnimation={true}
           animationDuration={900}
