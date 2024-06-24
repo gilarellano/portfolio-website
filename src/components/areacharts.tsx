@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import {MouseClickIcon, ClockIcon} from "@/assets/icons"
+import { MouseClickIcon, ClockIcon } from "@/assets/icons";
 import { AreaChart } from "@tremor/react";
 
 interface ChartData {
