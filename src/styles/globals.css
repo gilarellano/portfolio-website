@@ -5,7 +5,7 @@
 /* styles/global.css */
 :root {
   --primary-color: #6ee7b7; /* emerald */
-  --background-color: #181818;
+  --background-color: #202023;
   --primary-text-color: #e0e0e0;
   --secondary-text-color: #b0b0b0;
   --border-color: #444444;
@@ -60,6 +60,9 @@ body {
   }
   .border-custom {
     border-color: var(--border-color);
+  }
+  .border-primary-text {
+    border-color: var(--primary-text-color);
   }
   .border-custom-width {
     border-width: var(--border-width);
