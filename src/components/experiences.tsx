@@ -12,20 +12,20 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    href: "gilbertowindows.com",
-    period: "2014 - PRESENT",
-    role: "Operations Manager & Systems Developer",
+    href: "https://www.gilbertowindows.com/",
+    period: "2012 - PRESENT",
+    role: "Operations and Technology Administrator",
     company: "Gilberto Arellano Windows, San Francisco",
     description:
-      "Managed daily operations, staffing, inventory, and customer service to ensure a high-quality dining experience. Collaborated on menu development, marketing strategies, and financial planning, driving significant growth and establishing our taqueria as a beloved local spot.",
+      "Designed and developed a C++ program to streamline window quote calculations, reducing process time by over 80%. Managed systems design, developed safety-critical code, and maintained a CRM dashboard on Monday.com to ensure timely project delivery and effective client communication.",
   },
   {
-    href: "gilbertowindows.com",
+    href: "https://www.yelp.com/biz/la-capilla-berkeley",
     period: "2016 - 2019",
     role: "Restaurant Co-Owner",
     company: "La Capilla, Berkeley",
     description:
-      "Managed daily operations, staffing, inventory, and customer service to ensure a high-quality dining experience. Collaborated on menu development, marketing strategies, and financial planning, driving significant growth and establishing our taqueria as a beloved local spot.",
+      "Oversaw daily operations, generating $50-$60k in monthly sales. Implemented inventory management and supply chain optimization, managed payroll and accounts with QuickBooks Online, and led a team, demonstrating strong leadership and operational management skills.",
   },
 ];
 
@@ -43,7 +43,7 @@ const ListOfExperiences: React.FC = () => {
 
       <ol className="group/list flex flex-col" role="list">
         {experiences.map((experience, index) => (
-          <a key={index} href={experience.href}>
+          <a key={index} href={experience.href} target="_blank">
             <li className="group relative mb-10 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50">
               <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-neutral-700/20 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
               <div className="relative z-10 flex flex-col gap-y-2 lg:flex-row lg:gap-x-4">

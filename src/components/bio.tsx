@@ -24,8 +24,7 @@ const Bio = () => {
           </a>
           , our family-owned wood window company. My job involves making sure
           everything runs smoothly and updating our systems to digital
-          platforms. By bringing in advanced software solutions, I've made our
-          workflow more efficient, blending traditional craftsmanship with
+          platforms. I've made our workflow more efficient, blending traditional craftsmanship with
           modern technology.
         </p>
 

@@ -12,15 +12,15 @@ interface Project {
 
 const projects: Project[] = [
   {
-    href: "github.com",
-    imgSrc: "/project_screenshot.webp",
+    href: "https://github.com/gilarellano/academic-advising-tool",
+    imgSrc: "/advising_project_screenshot.webp",
     imgAlt: "Academic Advising Tool Screenshot",
     title: "Academic Advising Tool",
     description:
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
+      "Developed and maintained a comprehensive academic advising tool, deployed on AWS EC2 and Vercel, using TypeScript, React, and Next.js. Implemented unit and integration tests with Jest, and generated code quality reports using SonarQube.",
     technologies: [
       "AWS",
-      "Typescript",
+      "TypeScript",
       "React",
       "Next.js",
       "Jest",
@@ -28,31 +28,29 @@ const projects: Project[] = [
     ],
   },
   {
-    href: "#",
-    imgSrc: "/project_screenshot.webp",
-    imgAlt: "Window Quote Project Screenshot",
-    title: "Window Quote Project",
-    description:
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
-    technologies: ["C++", "Documentation", "CI/CD"],
-  },
-  {
-    href: "#",
-    imgSrc: "/project_screenshot.webp",
+    href: "https://gilarellano.github.io/LSTM_SpeechEmulation_Chelsea/",
+    imgSrc: "/LSTM_project_screenshot.webp",
     imgAlt: "Speech Emulation Project Screenshot",
     title: "Long Short Term Memory: Speech Emulation",
     description:
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
-    technologies: ["sci-kit learn", "API"],
+      "Developed a speech emulation project using LSTM models with TensorFlow and Keras, comparing it to GPT models. Processed and cleaned datasets using Python and NLTK, and visualized data with WordCloud and Matplotlib.",
+    technologies: [
+      "Python",
+      "TensorFlow",
+      "Keras",
+      "NLTK",
+      "WordCloud",
+      "Matplotlib",
+    ],
   },
   {
-    href: "#",
-    imgSrc: "/project_screenshot.webp",
-    imgAlt: "Game Of Life Project Screenshot",
-    title: "Game Of Life: Showcasing OOP Practices",
+    href: "https://gilarellano.github.io/sash-solutions/",
+    imgSrc: "/sash_project_screenshot.webp",
+    imgAlt: "Window Quote Project Screenshot",
+    title: "Sash Solutions - Window Quote Project",
     description:
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
-    technologies: ["C++"],
+      "Designed and developed 'Sash Solutions,' a C++ based quote/estimate calculator that reduced quote calculation time by 90%. Organized comprehensive documentation and established CI/CD pipelines.",
+    technologies: ["C++", "Documentation", "CI/CD"],
   },
 ];
 
@@ -68,7 +66,7 @@ const ListOfProjects: React.FC = () => {
 
       <ol className="group/list flex flex-col" role="list">
         {projects.map((project, index) => (
-          <a key={index} href={project.href}>
+          <a key={index} href={project.href} target="_blank">
             <li className="group relative mb-12 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50">
               <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-neutral-700/20 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
               <div className="relative z-10 flex flex-row gap-x-4">
