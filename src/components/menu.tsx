@@ -57,13 +57,13 @@ const Menu: React.FC<MenuProps> = ({ activeItem, handleClick }) => {
           return (
             <li
               key={index}
-              className={`group/item ${isActive ? "bg-emerald-600/20 rounded-md text-primary" : ""}`}
+              className={`group/item ${isActive ? "bg-emerald-600/10 rounded-md text-primary" : ""}`}
             >
               {/* Prevents from adding an additional layer of the bg-emerald when hovered over an active item */}
               <a
                 href={item.href}
                 className={`flex flex-row gap-1.5 items-center rounded-md py-1.5 px-3 
-                ${isActive ? "bg-emerald-600/20" : "hover:bg-emerald-600/20"}`}
+                ${isActive ? "bg-emerald-600/10" : "hover:bg-emerald-600/10"}`}
                 onClick={() => !item.isExternal && handleClick(item.href)}
                 target={item.isExternal ? "_blank" : "_self"}
               >
