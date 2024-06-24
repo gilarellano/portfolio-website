@@ -11,27 +11,38 @@ const Bio = () => {
           About
         </h2>
       </div>
-      <div className="leading-relaxed text-secondary-text text-base font-light">
-        {/* 1st Paragraph */}
+      <div className="leading-relaxed text-secondary-text text-base">
+
         <p className="mb-4">
-          As a recent graduate from Chapman University with a Bachelors in
-          Software Engineering, I bring a blend of technical skills and hands-on
-          experience. I ran a small taqueria in Berkeley, where I learned
-          business operations and how to manage a team. Currently, Im helping
-          manage my familys wood window manufacturing business in San Francisco,
-          focusing on transitioning to digital systems. One of my key projects
-          is a Window Quote Calculator that speeds up quote generation.
+          I graduated from Chapman University with a 🎓 Bachelor's in Software
+          Engineering and now handle the day-to-day operations at{" "}
+          <a href="https://www.gilbertowindows.com/" target="_blank" className="text-primary-text font-bold whitespace-nowrap hover:text-primary hover:underline hover:decoration-2 underline-offset-2">
+            🪟 Gilberto Arellano Windows
+          </a>
+          , our family-owned wood window company. My job involves making sure
+          everything runs smoothly and updating our systems to digital
+          platforms. By bringing in advanced software solutions, I've made our
+          workflow more efficient, blending traditional craftsmanship with
+          modern technology.
         </p>
 
-        {/* 2nd Paragraph */}
         <p className="mb-4">
-          Ive planned, designed, developed, tested, and deployed various
-          projects using technologies like React, Next.js, TypeScript,
-          PostgreSQL, and AWS. I enjoy combining business insights with software
-          development to create practical solutions that meet both operational
-          and customer needs. This approach helps me see the bigger picture and
-          understand how technology impacts business performance
+          Before this, I used to run a <a href="#taqueria" className="text-primary-text font-bold whitespace-nowrap">🌮 small taqueria</a>,
+          where I learned a lot about managing, delegating, and running a
+          business. It was a great experience that taught me the value of
+          effective communication, teamwork, and leadership. These skills have
+          been helpful in my software engineering journey, allowing me to
+          tackle technical challenges with a practical, business-focused
+          approach.
         </p>
+
+        <p className="mb-4">
+          Feel free to check out the <a href="#source-code" className="text-primary-text font-bold whitespace-nowrap">source code</a> for
+          this site. I initially designed it in Figma and then brought it to life through
+          code. Explore my projects to see how I design, document, develop, and
+          test software solutions.
+        </p>
+
       </div>
     </section>
   );
