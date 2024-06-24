@@ -9,7 +9,7 @@ import {
 
 const SocialMediaLinks = () => {
   return (
-    <div className="flex mt-8 gap-5 items-center">
+    <div className="flex ml-5 gap-5 items-center">
       <a href="https://github.com/gilarellano" target="_blank">
         <GithubIcon className="fill-secondary hover:fill-primary w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
