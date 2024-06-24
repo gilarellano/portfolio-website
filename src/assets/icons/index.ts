@@ -8,3 +8,5 @@ export { default as BioIcon } from "./bio_icon.svg";
 export { default as ProjectIcon } from "./projects_icon.svg";
 export { default as ExperienceIcon } from "./experience_icon.svg";
 export { default as ResumeIcon } from "./resume_icon.svg";
+export { default as ClockIcon} from "./clock_icon.svg";
+export { default as MouseClickIcon } from "./mouse_click.svg";
