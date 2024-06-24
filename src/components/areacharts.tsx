@@ -66,7 +66,7 @@ export default function AreaChartHero() {
       <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
         {/* Header Information */}
         <div className="flex flex-row justify-between w-full px-0.5">
-          <span className="flex flex-row gap-x-1 items-center">
+          <span className="hidden sm:flex flex-row gap-x-1 items-center">
             <h2 className="text-base md:text-lg lg:text-sm text-secondary-text">
               Total Visitors:
             </h2>
@@ -77,14 +77,14 @@ export default function AreaChartHero() {
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 text-secondary-text rounded-custom">
             {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
             <MouseClickIcon className="w-[16px] h-[16px] md:w-[20px] md:h-[20px] lg:w-[18px] lg:h-[18px]" />
-            <p className="text-xs md:text-sm lg:text-sm">
+            <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor <b className="text-primary">#32</b>
             </p>
           </div>
         </div>
 
         <AreaChart
-          className="h-[80px] mt-3 w-full max-w-lg"
+          className="h-[80px] mt-3"
           data={chartdata}
           index="date"
           categories={["Visitors"]}
@@ -102,7 +102,7 @@ export default function AreaChartHero() {
       {/* Load Time Chart */}
       <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
         <div className="flex flex-row justify-between w-full px-0.5">
-          <span className="flex flex-row gap-x-1 items-center">
+          <span className="hidden sm:flex flex-row gap-x-1 items-center">
             <h2 className="text-base md:text-lg lg:text-sm text-secondary-text">
               Avg. Page Load Time:
             </h2>
@@ -110,12 +110,17 @@ export default function AreaChartHero() {
               1.23s
             </p>
           </span>
-          <div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">
+          <div className="flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">
+
             {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
-            <ClockIcon className="w-[16px] h-[16px]lg:w-[14px] lg:h-[14px]" />
-            <p className="text-xs md:text-sm lg:text-sm">
+            <ClockIcon className="w-[16px] h-[16px] md:w-[20px] md:h-[20px] lg:w-[14px] lg:h-[14px]" />
+            <p className="hidden sm:block text-base md:text-lg lg:text-sm">
               Your Time: <b className="text-primary">1.24s</b>
             </p>
+            <p className="block sm:hidden text-base md:text-lg lg:text-sm">
+              Your Page Load Time: <b className="text-primary">1.24s</b>
+            </p>
+
           </div>
         </div>
         <AreaChart

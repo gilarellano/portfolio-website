@@ -5,7 +5,7 @@ const Avatar = () => {
   return (
     <div className="mb-8 w-full flex flex-row justify-start gap-4 items-center">
       {/* Circular Picture */}
-      <div className="lg:w-24 lg:h-24 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
         {/*<div className="border-custom w-20 h-20 lg:w-24 lg:h-24 rounded-full border-custom-width flex items-center justify-center overflow-hidden flex-shrink-0">*/}
         <Image
           src="/headshot.webp"
@@ -18,7 +18,7 @@ const Avatar = () => {
       <div className="flex flex-col items-start">
         {" "}
         {/* Text Section, Header then subheader */}
-        <h1 className="text-4xl font-bold text-primary-text">
+        <h1 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-primary-text">
           {/*<h1 className="text-3xl lg:text-5xl font-bold text-primary-text sm:text-4xl">*/}
 
           <a href="/">Gilberto Arellano</a>
