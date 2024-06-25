@@ -76,7 +76,7 @@ export default function AreaChartHero() {
           </span>
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 text-secondary-text rounded-custom">
             {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
-            <MouseClickIcon className="w-[16px] h-[16px] md:w-[20px] md:h-[20px] lg:w-[18px] lg:h-[18px]" />
+            <MouseClickIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[18px] lg:h-[18px]" />
             <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor <b className="text-primary">#32</b>
             </p>
@@ -113,7 +113,7 @@ export default function AreaChartHero() {
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">
 
             {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
-            <ClockIcon className="w-[16px] h-[16px] md:w-[20px] md:h-[20px] lg:w-[14px] lg:h-[14px]" />
+            <ClockIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[14px] lg:h-[14px]" />
             <p className="hidden sm:block text-base md:text-lg lg:text-sm">
               Your Time: <b className="text-primary">1.24s</b>
             </p>
