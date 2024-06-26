@@ -43,7 +43,7 @@ const customTooltip = (props: CustomTooltipProps) => {
   return (
     <div className="flex rounded-tremor-default border-custom-width border-custom bg-background p-2 text-tremor-default shadow-tremor-dropdown">
       {payload.map((category, idx) => (
-        <div className="flex flex-1 space-x-2.5">
+        <div key={idx} className="flex flex-1 space-x-2.5">
           <div className={`flex w-1 flex-col bg-emerald-500 rounded`} />
           <div className="space-y-1">
             <p className="text-secondary-text">{date}</p>
@@ -111,7 +111,6 @@ export default function AreaChartHero() {
             </p>
           </span>
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">
-
             {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
             <ClockIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[14px] lg:h-[14px]" />
             <p className="hidden sm:block text-base md:text-lg lg:text-sm">
@@ -120,7 +119,6 @@ export default function AreaChartHero() {
             <p className="block sm:hidden text-base md:text-lg lg:text-sm">
               Your Page Load Time: <b className="text-primary">1.24s</b>
             </p>
-
           </div>
         </div>
         <AreaChart

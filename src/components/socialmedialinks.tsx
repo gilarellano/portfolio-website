@@ -7,15 +7,18 @@ import {
   ResumeIcon,
   SourceCodeIcon,
 } from "@/assets/icons";
-import { Button } from '@headlessui/react'
+import { Button } from "@headlessui/react";
 
 const SocialMediaLinks = () => {
   return (
     <div className="flex lg:ml-4 gap-5 items-center">
-
-      <a href="/ArellanoGilbertoResume.pdf" target="_blank" className="lg:hidden">
+      <a
+        href="/ArellanoGilbertoResume.pdf"
+        target="_blank"
+        className="lg:hidden"
+      >
         <Button className="inline-flex items-center gap-2 rounded-md shadow-md py-1.5 px-3 text-sm/6 font-semibold text-primary-text bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800">
-          <ResumeIcon className="stroke-primary-text stroke-1.5 w-[16px] h-[16px] md:w-[20px] md:h-[20px]"/>
+          <ResumeIcon className="stroke-primary-text stroke-1.5 w-[16px] h-[16px] md:w-[20px] md:h-[20px]" />
           Resume
         </Button>
       </a>
@@ -36,10 +39,12 @@ const SocialMediaLinks = () => {
       </a>
       */}
 
-      <a href="https://github.com/gilarellano/portfolio-website" target="_blank">
+      <a
+        href="https://github.com/gilarellano/portfolio-website"
+        target="_blank"
+      >
         <SourceCodeIcon className="stroke-secondary hover:stroke-primary stroke-2 w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
-
     </div>
   );
 };

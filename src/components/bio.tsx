@@ -13,7 +13,7 @@ const Bio = () => {
       </div>
       <div className="leading-relaxed text-secondary-text text-base">
         <p className="mb-4">
-          I graduated from Chapman University with a Bachelor's in Software
+          I graduated from Chapman University with a Bachelor&apos;s in Software
           Engineering and now handle the day-to-day operations at{" "}
           <a
             href="https://www.gilbertowindows.com/"
@@ -24,8 +24,8 @@ const Bio = () => {
           </a>
           , our family-owned wood window company. My job involves making sure
           everything runs smoothly and updating our systems to digital
-          platforms. I've made our workflow more efficient, blending traditional craftsmanship with
-          modern technology.
+          platforms. I&apos;ve made our workflow more efficient, blending
+          traditional craftsmanship with modern technology.
         </p>
 
         <p className="mb-4">
