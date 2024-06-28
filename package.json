@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:trace": "NODE_OPTIONS=--trace-deprecation next start",
     "lint": "next lint",
     "format": "prettier . --write"
   },
@@ -23,6 +24,7 @@
     "react": "^18",
     "react-dom": "^18",
     "recharts": "^2.12.7",
+    "sharp": "^0.33.4",
     "tailwind-merge": "^2.3.0",
     "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7"
