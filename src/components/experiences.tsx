@@ -43,8 +43,11 @@ const ListOfExperiences: React.FC = () => {
 
       <ol className="group/list flex flex-col" role="list">
         {experiences.map((experience, index) => (
-          <li className="group relative mb-10 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50">
-            <a key={index} href={experience.href} target="_blank">
+          <li
+            key={index}
+            className="group relative mb-10 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50"
+          >
+            <a href={experience.href} target="_blank">
               <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-neutral-700/20 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
               <div className="relative z-10 flex flex-col gap-y-2 lg:flex-row lg:gap-x-4">
                 <p className="pt-0.5 lg:w-[86px] shrink-0 text-secondary-text font-light text-sm lg:text-xs">

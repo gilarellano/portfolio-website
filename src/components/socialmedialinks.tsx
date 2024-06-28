@@ -24,10 +24,18 @@ const SocialMediaLinks = () => {
         </Button>
       </a>
 
-      <a href="https://github.com/gilarellano" target="_blank" aria-label="Github">
+      <a
+        href="https://github.com/gilarellano"
+        target="_blank"
+        aria-label="Github"
+      >
         <GithubIcon className="fill-secondary hover:fill-primary w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
-      <a href="https://www.linkedin.com/in/gilbertoarellano/" target="_blank" aria-label="LinkedIn">
+      <a
+        href="https://www.linkedin.com/in/gilbertoarellano/"
+        target="_blank"
+        aria-label="LinkedIn"
+      >
         <LinkedInIcon className="fill-secondary hover:fill-primary w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
 
@@ -40,7 +48,11 @@ const SocialMediaLinks = () => {
       </a>
       */}
 
-      <a href="https://github.com/gilarellano/portfolio-website" target="_blank" aria-label="Source Code">
+      <a
+        href="https://github.com/gilarellano/portfolio-website"
+        target="_blank"
+        aria-label="Source Code"
+      >
         <SourceCodeIcon className="stroke-secondary hover:stroke-primary stroke-2 w-7 h-7 lg:w-6 lg:h-6 shrink-0" />
       </a>
     </div>
