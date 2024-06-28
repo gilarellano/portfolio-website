@@ -66,8 +66,8 @@ const ListOfProjects: React.FC = () => {
 
       <ol className="group/list flex flex-col" role="list">
         {projects.map((project, index) => (
-          <a key={index} href={project.href} target="_blank">
-            <li className="group relative mb-12 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50">
+          <li className="group relative mb-12 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50">
+            <a key={index} href={project.href} target="_blank">
               <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-neutral-700/20 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
               <div className="relative z-10 flex flex-row gap-x-4">
                 <Image
@@ -91,8 +91,8 @@ const ListOfProjects: React.FC = () => {
                   </ul>
                 </div>
               </div>
-            </li>
-          </a>
+            </a>
+          </li>
         ))}
       </ol>
     </section>
