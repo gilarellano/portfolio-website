@@ -1,48 +1,23 @@
-"use client";
-
-import { useState, useEffect } from "react";
+//"use client"
+//import { useEffect } from 'react';
+import { Suspense } from "react";
 import {
   Avatar,
   Bio,
   ListOfProjects,
-  Menu,
   SocialMediaLinks,
   ListOfExperiences,
   AreaChartHero,
 } from "@/components";
+import VisitorsTable from "@/components/VisitorsTable";
+//import { logVisitor } from '@/lib/action';
 
-import useIntersectionObserver from "@/lib/useIntersectionObserver";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<string>("");
-  const [activeItem, setActiveItem] = useState<string>("");
-
-  // Changes the URL based on the section
-  useIntersectionObserver(setActiveSection);
-
-  useEffect(() => {
-    // Set the active item based on the current URL hash when the component mounts
-    setActiveItem(window.location.hash);
-
-    const handleHashChange = () => {
-      setActiveItem(window.location.hash);
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Update the active item whenever the active section changes
-    setActiveItem(activeSection);
-  }, [activeSection]);
-
-  const handleClick = (item: string) => {
-    setActiveItem(item);
-  };
+  //useEffect(() => {
+    // Log the visitor data when the page loads
+    //logVisitor();
+  //}, []);
 
   return (
     <div className="bg-background mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
@@ -52,7 +27,9 @@ export default function Home() {
           <div>
             <Avatar />
             <AreaChartHero />
-            <Menu activeItem={activeItem} handleClick={handleClick} />
+            <Suspense>
+              <VisitorsTable />
+            </Suspense>
           </div>
           <SocialMediaLinks />
         </div>
@@ -67,3 +44,4 @@ export default function Home() {
     </div>
   );
 }
+

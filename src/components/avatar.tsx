@@ -12,7 +12,7 @@ const Avatar = () => {
           alt="Avatar"
           width={96}
           height={96}
-          className="rounded-full object-cover"
+          className="aspect-auto rounded-full object-cover"
         />
       </div>
       <div className="flex flex-col items-start">

@@ -34,9 +34,8 @@ const valueFormatter = (number: number): string => {
   return `${number.toFixed(2)}s`;
 };
 
-const customTooltip = (props: CustomTooltipProps) => {
-  const { payload, active } = props;
-  if (!active || !payload || payload.length === 0) return null;
+const customTooltip = ({ payload = [], active = false }: CustomTooltipProps) => {
+  if (!active || payload.length === 0) return null;
 
   const date = payload[0].payload.date;
 
@@ -60,11 +59,7 @@ const customTooltip = (props: CustomTooltipProps) => {
 export default function AreaChartHero() {
   return (
     <div className="lg:max-w-[400px]">
-      {/*</div><div className="lg:max-w-[490px]">*/}
-
-      {/* Weekly Visitor Chart */}
       <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
-        {/* Header Information */}
         <div className="flex flex-row justify-between w-full px-0.5">
           <span className="hidden sm:flex flex-row gap-x-1 items-center">
             <h2 className="text-base md:text-lg lg:text-sm text-secondary-text">
@@ -75,7 +70,6 @@ export default function AreaChartHero() {
             </p>
           </span>
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 text-secondary-text rounded-custom">
-            {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
             <MouseClickIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[18px] lg:h-[18px]" />
             <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor <b className="text-primary">#32</b>
@@ -99,7 +93,6 @@ export default function AreaChartHero() {
         />
       </div>
 
-      {/* Load Time Chart */}
       <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
         <div className="flex flex-row justify-between w-full px-0.5">
           <span className="hidden sm:flex flex-row gap-x-1 items-center">
@@ -111,7 +104,6 @@ export default function AreaChartHero() {
             </p>
           </span>
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">
-            {/*<div className="hidden sm:flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">*/}
             <ClockIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[14px] lg:h-[14px]" />
             <p className="hidden sm:block text-base md:text-lg lg:text-sm">
               Your Time: <b className="text-primary">1.24s</b>
