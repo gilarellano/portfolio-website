@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import {
   BioIcon,
@@ -16,8 +15,8 @@ interface MenuItem {
 }
 
 interface MenuProps {
-  activeItem: string;
-  handleClick: (item: string) => void;
+  activeItem?: string;
+  handleClick?: (item: string) => void;
 }
 
 const menuItems: MenuItem[] = [
@@ -44,7 +43,10 @@ const menuItems: MenuItem[] = [
   },
 ];
 
-const Menu: React.FC<MenuProps> = ({ activeItem, handleClick }) => {
+const Menu: React.FC<MenuProps> = ({
+  activeItem = "",
+  handleClick = () => {},
+}) => {
   return (
     <nav className="nav hidden lg:block">
       <ul
@@ -66,6 +68,7 @@ const Menu: React.FC<MenuProps> = ({ activeItem, handleClick }) => {
                 ${isActive ? "bg-emerald-600/10" : "hover:bg-emerald-600/10"}`}
                 onClick={() => !item.isExternal && handleClick(item.href)}
                 target={item.isExternal ? "_blank" : "_self"}
+                rel={item.isExternal ? "noopener noreferrer" : undefined}
               >
                 <item.icon
                   className={`${isActive ? "stroke-primary" : "stroke-secondary"} w-5 h-5 group-hover/item:stroke-primary shrink-0`}
