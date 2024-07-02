@@ -21,13 +21,14 @@ interface CustomTooltipProps {
   active?: boolean;
 }
 
-
-
 const valueFormatter = (number: number): string => {
   return `${number.toFixed(2)}s`;
 };
 
-const customTooltip = ({ payload = [], active = false }: CustomTooltipProps) => {
+const customTooltip = ({
+  payload = [],
+  active = false,
+}: CustomTooltipProps) => {
   if (!active || payload.length === 0) return null;
 
   const date = payload[0].payload.date;
@@ -49,7 +50,11 @@ const customTooltip = ({ payload = [], active = false }: CustomTooltipProps) => 
   );
 };
 
-export default function AreaChartHero({ chartData, totalVisitors, avgLoadTime }: AreaChartHeroProps) {
+export default function AreaChartHero({
+  chartData,
+  totalVisitors,
+  avgLoadTime,
+}: AreaChartHeroProps) {
   return (
     <div className="lg:max-w-[400px]">
       <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
