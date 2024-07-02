@@ -4,4 +4,3 @@ export { default as ListOfProjects } from "./projects";
 export { default as Menu } from "./menu";
 export { default as SocialMediaLinks } from "./socialmedialinks";
 export { default as ListOfExperiences } from "./experiences";
-export { default as AreaChartHero } from "./areacharts";

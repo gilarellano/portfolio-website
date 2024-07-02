@@ -10,25 +10,18 @@ interface ChartData {
   AvgLoadTime: number;
 }
 
+interface AreaChartHeroProps {
+  chartData: ChartData[];
+  totalVisitors: number;
+  avgLoadTime: string;
+}
+
 interface CustomTooltipProps {
   payload?: any[];
   active?: boolean;
 }
 
-const chartdata = [
-  { date: "Jan 1", Visitors: 5, AvgLoadTime: 1.23 },
-  { date: "Jan 8", Visitors: 10, AvgLoadTime: 1.14 },
-  { date: "Jan 15", Visitors: 15, AvgLoadTime: 1.19 },
-  { date: "Jan 22", Visitors: 12, AvgLoadTime: 1.32 },
-  { date: "Jan 29", Visitors: 8, AvgLoadTime: 1.6 },
-  { date: "Feb 5", Visitors: 3, AvgLoadTime: 1.42 },
-  { date: "Feb 12", Visitors: 7, AvgLoadTime: 1.39 },
-  { date: "Feb 19", Visitors: 14, AvgLoadTime: 1.25 },
-  { date: "Feb 26", Visitors: 9, AvgLoadTime: 1.33 },
-  { date: "Mar 4", Visitors: 11, AvgLoadTime: 1.49 },
-  { date: "Mar 11", Visitors: 5, AvgLoadTime: 1.54 },
-  { date: "Mar 18", Visitors: 20, AvgLoadTime: 1.1 },
-];
+
 
 const valueFormatter = (number: number): string => {
   return `${number.toFixed(2)}s`;
@@ -56,7 +49,7 @@ const customTooltip = ({ payload = [], active = false }: CustomTooltipProps) => 
   );
 };
 
-export default function AreaChartHero() {
+export default function AreaChartHero({ chartData, totalVisitors, avgLoadTime }: AreaChartHeroProps) {
   return (
     <div className="lg:max-w-[400px]">
       <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
@@ -79,12 +72,12 @@ export default function AreaChartHero() {
 
         <AreaChart
           className="h-[80px] mt-3"
-          data={chartdata}
+          data={chartData}
           index="date"
           categories={["Visitors"]}
           colors={["emerald"]}
           showLegend={false}
-          yAxisWidth={30}
+          yAxisWidth={32}
           onValueChange={(v) => console.log(v)}
           showAnimation={true}
           animationDuration={900}
@@ -115,7 +108,7 @@ export default function AreaChartHero() {
         </div>
         <AreaChart
           className="h-[80px] mt-3"
-          data={chartdata}
+          data={chartData}
           index="date"
           categories={["AvgLoadTime"]}
           valueFormatter={valueFormatter}

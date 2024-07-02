@@ -1,7 +1,7 @@
-'use server';
+"use server";
 
-import { sql } from '@vercel/postgres';
-import { revalidatePath } from 'next/cache';
+import { sql } from "@vercel/postgres";
+import { revalidatePath } from "next/cache";
 
 // Function to create a visitor entry with artificial load time
 export async function logVisitor() {
@@ -16,10 +16,10 @@ export async function logVisitor() {
     `;
   } catch (error) {
     return {
-      message: 'Database Error: Failed to Create Visitor.',
+      message: "Database Error: Failed to Create Visitor.",
     };
   }
 
   // Revalidate the path where the visitor count and load times are displayed
-  revalidatePath('/'); // Replace with the actual path you want to revalidate
+  revalidatePath("/"); // Replace with the actual path you want to revalidate
 }
