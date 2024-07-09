@@ -14,6 +14,7 @@ interface AreaChartHeroProps {
   chartData: ChartData[];
   totalVisitors: number;
   avgLoadTime: string;
+  pageLoadTime: string | null;
 }
 
 interface CustomTooltipProps {
@@ -54,6 +55,7 @@ export default function AreaChartHero({
   chartData,
   totalVisitors,
   avgLoadTime,
+  pageLoadTime,
 }: AreaChartHeroProps) {
   return (
     <div className="lg:max-w-[400px]">
@@ -64,13 +66,14 @@ export default function AreaChartHero({
               Total Visitors:
             </h2>
             <p className="text-base md:text-lg lg:text-sm font-bold text-primary-text">
-              231
+              {totalVisitors}
             </p>
           </span>
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 text-secondary-text rounded-custom">
             <MouseClickIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[18px] lg:h-[18px]" />
             <p className="text-base md:text-lg lg:text-sm">
-              You&apos;re Visitor <b className="text-primary">#32</b>
+              You&apos;re Visitor{" "}
+              <b className="text-primary">#{totalVisitors}</b>
             </p>
           </div>
         </div>
@@ -98,16 +101,22 @@ export default function AreaChartHero({
               Avg. Page Load Time:
             </h2>
             <p className="text-base md:text-lg lg:text-sm font-bold text-primary-text">
-              1.23s
+              {avgLoadTime}s
             </p>
           </span>
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">
             <ClockIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[14px] lg:h-[14px]" />
             <p className="hidden sm:block text-base md:text-lg lg:text-sm">
-              Your Time: <b className="text-primary">1.24s</b>
+              Your Time:{" "}
+              <b className="text-primary inline-block w-[40px]">
+                {pageLoadTime !== null ? `${pageLoadTime}s` : "--"}
+              </b>
             </p>
             <p className="block sm:hidden text-base md:text-lg lg:text-sm">
-              Your Page Load Time: <b className="text-primary">1.24s</b>
+              Your Page Load Time:{" "}
+              <b className="text-primary inline-block w-[40px]">
+                {pageLoadTime !== null ? `${pageLoadTime}s` : "--"}
+              </b>
             </p>
           </div>
         </div>

@@ -1,7 +1,10 @@
 // components/AreaChartWrapper.tsx
-import { fetchWeeklySummary } from "@/lib/data";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { WeeklySummary } from "@/lib/definitions";
 import AreaChartHero from "./AreaChartHero";
+import { getPageLoadTime } from "@/lib/loadTime";
 
 function processWeeklySummary(data: WeeklySummary[]) {
   return data
@@ -16,24 +19,35 @@ function processWeeklySummary(data: WeeklySummary[]) {
     .reverse(); // Reverse to get chronological order
 }
 
-export default async function AreaChartWrapper() {
-  const weeklySummary = await fetchWeeklySummary();
-  const processedData = processWeeklySummary(weeklySummary);
-
-  const totalVisitors = weeklySummary.reduce(
-    (sum, week) => sum + week.visitor_count,
-    0,
+export default function AreaChartWrapper({
+  weeklySummary,
+  totalVisitors,
+  avgLoadTime,
+}: {
+  weeklySummary: WeeklySummary[];
+  totalVisitors: number;
+  avgLoadTime: string;
+}) {
+  const [pageLoadTime, setPageLoadTime] = useState<number | undefined>(
+    undefined,
   );
-  const overallAvgLoadTime = (
-    weeklySummary.reduce((sum, week) => sum + week.average_load_time, 0) /
-    weeklySummary.length
-  ).toFixed(2);
+
+  useEffect(() => {
+    getPageLoadTime().then((time) => setPageLoadTime(time));
+  }, []);
+
+  const processedData = processWeeklySummary(weeklySummary);
+  const formattedLoadTime =
+    pageLoadTime !== undefined ? (pageLoadTime / 1000).toFixed(2) : "-.--";
+
+  console.log("load time: ", pageLoadTime);
 
   return (
     <AreaChartHero
       chartData={processedData}
       totalVisitors={totalVisitors}
-      avgLoadTime={overallAvgLoadTime}
+      avgLoadTime={avgLoadTime}
+      pageLoadTime={formattedLoadTime ?? null}
     />
   );
 }
