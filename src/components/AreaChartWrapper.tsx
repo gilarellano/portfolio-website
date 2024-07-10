@@ -1,10 +1,9 @@
 // components/AreaChartWrapper.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
 import { WeeklySummary } from "@/lib/definitions";
 import AreaChartHero from "./AreaChartHero";
-import { getPageLoadTime } from "@/lib/loadTime";
+import { usePageLoadTime } from "@/lib/usePageLoadTime";
 
 function processWeeklySummary(data: WeeklySummary[]) {
   return data
@@ -28,19 +27,11 @@ export default function AreaChartWrapper({
   totalVisitors: number;
   avgLoadTime: string;
 }) {
-  const [pageLoadTime, setPageLoadTime] = useState<number | undefined>(
-    undefined,
-  );
 
-  useEffect(() => {
-    getPageLoadTime().then((time) => setPageLoadTime(time));
-  }, []);
-
+  const pageLoadTime = usePageLoadTime();
   const processedData = processWeeklySummary(weeklySummary);
   const formattedLoadTime =
     pageLoadTime !== undefined ? (pageLoadTime / 1000).toFixed(2) : "-.--";
-
-  console.log("load time: ", pageLoadTime);
 
   return (
     <AreaChartHero
