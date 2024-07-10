@@ -5,8 +5,9 @@ import { unstable_noStore as noStore } from "next/cache";
 export async function GET() {
   noStore();
   try {
+    // Converts from ms to seconds
     const data = await sql<{ avg: number }>`
-      SELECT AVG(page_load_time) as avg
+      SELECT AVG(page_load_time_ms) / 1000.0 as avg
       FROM visitors
     `;
     return NextResponse.json({ avgLoadTime: data.rows[0].avg.toFixed(2) });

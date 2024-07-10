@@ -1,3 +1,5 @@
+// app/api/weekly-summary/route.ts
+
 import { NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
 import { WeeklySummary } from "@/lib/definitions";
