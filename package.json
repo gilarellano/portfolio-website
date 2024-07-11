@@ -8,7 +8,8 @@
     "start": "next start",
     "start:trace": "NODE_OPTIONS=--trace-deprecation next start",
     "lint": "next lint",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "reset-weekly-summary": "ts-node src/lib/resetWeeklySummary.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.0",
@@ -20,6 +21,7 @@
     "@vercel/speed-insights": "^1.0.12",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
     "next": "14.2.4",
     "punycode": "^2.3.1",
     "react": "^18",
