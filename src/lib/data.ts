@@ -19,7 +19,7 @@ export async function fetchWeeklySummary(): Promise<WeeklySummary[]> {
 export async function fetchTotalVisitors(): Promise<number> {
   const res = await fetch(`${BASE_URL}/api/total-visitors`, {
     next: { revalidate: 1 }, // Revalidate every minute, 60s
-  });
+  })
   if (!res.ok) {
     throw new Error("Failed to fetch total visitors");
   }

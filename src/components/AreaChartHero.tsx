@@ -14,7 +14,8 @@ interface AreaChartHeroProps {
   chartData: ChartData[];
   totalVisitors: number;
   avgLoadTime: string;
-  pageLoadTime: string | null;
+  pageLoadTime: number | null;
+  visitorId: number | null;
 }
 
 interface CustomTooltipProps {
@@ -56,6 +57,7 @@ export default function AreaChartHero({
   totalVisitors,
   avgLoadTime,
   pageLoadTime,
+  visitorId,
 }: AreaChartHeroProps) {
   return (
     <div className="lg:max-w-[400px]">
@@ -73,7 +75,7 @@ export default function AreaChartHero({
             <MouseClickIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[18px] lg:h-[18px]" />
             <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor{" "}
-              <b className="text-primary">#{totalVisitors}</b>
+              <b className="text-primary">#{visitorId !== null ? `${visitorId}`: '--'}</b>
             </p>
           </div>
         </div>
@@ -109,13 +111,13 @@ export default function AreaChartHero({
             <p className="hidden sm:block text-base md:text-lg lg:text-sm">
               Your Time:{" "}
               <b className="text-primary inline-block w-[40px]">
-                {pageLoadTime !== null ? `${pageLoadTime}s` : "--"}
+                {pageLoadTime !== null ? `${pageLoadTime}s` : "-.--s"}
               </b>
             </p>
             <p className="block sm:hidden text-base md:text-lg lg:text-sm">
               Your Page Load Time:{" "}
               <b className="text-primary inline-block w-[40px]">
-                {pageLoadTime !== null ? `${pageLoadTime}s` : "--"}
+                {pageLoadTime !== null ? `${pageLoadTime}s` : "-.--s"}
               </b>
             </p>
           </div>
@@ -128,7 +130,7 @@ export default function AreaChartHero({
           valueFormatter={valueFormatter}
           colors={["emerald"]}
           showLegend={false}
-          yAxisWidth={45}
+          yAxisWidth={50}
           onValueChange={(v) => console.log(v)}
           showAnimation={true}
           animationDuration={900}

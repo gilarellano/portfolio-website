@@ -13,9 +13,14 @@ function processWeeklySummary(data: WeeklySummary[]) {
         day: "numeric",
       }),
       Visitors: week.visitor_count,
-      AvgLoadTime: week.average_load_time,
+      AvgLoadTime: formatLoadTime(week.avg_load_time_ms),
     }))
     .reverse(); // Reverse to get chronological order
+}
+
+// Function to format load time from milliseconds to seconds with 2 decimal places
+function formatLoadTime(milliseconds: number): number {
+  return parseFloat((milliseconds / 1000).toFixed(2));
 }
 
 export default function AreaChartWrapper({
@@ -27,11 +32,10 @@ export default function AreaChartWrapper({
   totalVisitors: number;
   avgLoadTime: string;
 }) {
-
-  const pageLoadTime = usePageLoadTime();
+  const { pageLoadTime, visitorId } = usePageLoadTime();
   const processedData = processWeeklySummary(weeklySummary);
   const formattedLoadTime =
-    pageLoadTime !== undefined ? (pageLoadTime / 1000).toFixed(2) : "-.--";
+    pageLoadTime !== undefined ? formatLoadTime(pageLoadTime) : null;
 
   return (
     <AreaChartHero
@@ -39,6 +43,7 @@ export default function AreaChartWrapper({
       totalVisitors={totalVisitors}
       avgLoadTime={avgLoadTime}
       pageLoadTime={formattedLoadTime ?? null}
+      visitorId={visitorId ?? null}
     />
   );
 }

@@ -10,5 +10,5 @@ export interface WeeklySummary {
   week_start: string;
   week_end: string;
   visitor_count: number;
-  average_load_time: number;
+  avg_load_time_ms: number;
 }

@@ -9,7 +9,7 @@ export async function GET() {
   noStore();
   try {
     const data = await sql<WeeklySummary[]>`
-      SELECT week_start, week_end, visitor_count, average_load_time 
+      SELECT week_start, week_end, visitor_count, avg_load_time_ms
       FROM weeklysummary 
       ORDER BY week_start DESC 
       LIMIT 20
