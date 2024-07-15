@@ -1,54 +1,76 @@
 // lib/data.ts
 
 import { sql } from "@vercel/postgres";
-import { unstable_noStore as noStore } from "next/cache";
-import { Visitor, WeeklySummary } from "./definitions";
+import { unstable_noStore as noStore, unstable_cache as cache } from "next/cache";
+import { WeeklySummary } from "./definitions";
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+//const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
 export async function fetchWeeklySummary(): Promise<WeeklySummary[]> {
-  const res = await fetch(`${BASE_URL}/api/weekly-summary`, {
-    next: { revalidate: 1 }, // Revalidate weekly 60,480s
+  noStore();
+  const fetcher = async () => {
+    try {
+      const data = await sql<WeeklySummary>`
+        SELECT week_start, week_end, visitor_count, avg_load_time_ms
+        FROM weeklysummary 
+        ORDER BY week_start DESC 
+        LIMIT 20
+      `;
+      return data.rows;
+    } catch (error) {
+      console.error("Database Error:", error);
+      throw new Error("Failed to fetch weekly summary");
+    }
+  };
+
+  const cachedFetcher = cache(fetcher, ['weeklysummary'], {
+    revalidate: 1 // Revalidate weekly, 60,480s
   });
-  if (!res.ok) {
-    throw new Error("Failed to fetch weekly summary");
-  }
-  return res.json();
+
+  return cachedFetcher();
 }
 
 export async function fetchTotalVisitors(): Promise<number> {
-  const res = await fetch(`${BASE_URL}/api/total-visitors`, {
-    next: { revalidate: 1 }, // Revalidate every minute, 60s
-  })
-  if (!res.ok) {
-    throw new Error("Failed to fetch total visitors");
-  }
-  const data = await res.json();
-  return data.totalVisitors;
+  noStore();
+  const fetcher = async () => {
+    try {
+      const data = await sql<{ count: number }>`
+        SELECT COUNT(*) as count
+        FROM visitors
+      `;
+      return data.rows[0].count;
+    } catch (error) {
+      console.error("Database Error:", error);
+      throw new Error("Failed to fetch total visitors");
+    }
+  };
+
+  const cachedFetcher = cache(fetcher, ['totalVisitors'], {
+    revalidate: 1 // Revalidate every minute, 60s
+  });
+
+  return cachedFetcher();
 }
 
 export async function fetchAvgLoadTime(): Promise<string> {
-  const res = await fetch(`${BASE_URL}/api/avg-load-time`, {
-    next: { revalidate: 1 }, // Revalidate every minute, 60s
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch average load time");
-  }
-  const data = await res.json();
-  return data.avgLoadTime;
-}
-
-export async function fetchVisitors(limit: number = 5): Promise<Visitor[]> {
   noStore();
-  try {
-    const data = await sql<Visitor>`
-      SELECT * FROM visitors
-      ORDER BY visit_date DESC
-      LIMIT ${limit}
-    `;
-    return data.rows;
-  } catch (error) {
-    console.error("Database Error:", error);
-    throw new Error("Failed to fetch visitor data.");
-  }
+  const fetcher = async () => {
+    try {
+      // Converts from ms to seconds
+      const data = await sql<{ avg: number }>`
+        SELECT AVG(page_load_time_ms) / 1000.0 as avg
+        FROM visitors
+      `;
+      return data.rows[0].avg.toFixed(2);
+    } catch (error) {
+      console.error("Database Error:", error);
+      throw new Error("Failed to fetch average load time");
+    }
+  };
+
+  const cachedFetcher = cache(fetcher, ['avgLoadTime'], {
+    revalidate: 1 // Revalidate every minute, 60s
+  });
+
+  return cachedFetcher();
 }
