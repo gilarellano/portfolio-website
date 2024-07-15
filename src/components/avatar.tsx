@@ -12,6 +12,7 @@ const Avatar = () => {
           alt="Avatar"
           width={96}
           height={96}
+          style={{ width: "auto", height: "auto" }}
           className="aspect-auto rounded-full object-cover"
         />
       </div>

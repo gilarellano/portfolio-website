@@ -53,8 +53,7 @@ const Bio = () => {
           >
             👨🏽‍💻 source code
           </a>{" "}
-          for this site. I initially designed it in Figma and then brought it to
-          life. Explore my projects to see how I design, document, develop, and
+          for this site. Explore my projects to see how I design, document, develop, and
           test software solutions.
         </p>
       </div>
