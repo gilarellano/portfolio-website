@@ -1,6 +1,8 @@
 // lib/loadTime.ts
 'use client';
 
+import { logVisitor } from "./action";
+
 // Function to check if a new day has started
 export function isNewDay(): boolean {
   const now = new Date();
@@ -56,27 +58,17 @@ export async function logVisitorInfo(pageLoadTime: number): Promise<number | und
     try {
       // Set logging in progress flag
       isLogging = true;
-      // Send POST request to log the visitor
-      const response = await fetch('/api/log-visitor', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ pageLoadTime }),
-      });
 
-      if (!response.ok) {
-        console.error('Failed to log visitor');
-        return undefined;
-      } else {
-        const result = await response.json();
-        console.log('Visitor logged successfully');
-        const visitorId = result.visitorId;
-        // Save visitor ID and date to local storage
-        localStorage.setItem("visitorId", visitorId.toString());
-        localStorage.setItem("visitorDate", new Date().toISOString().split("T")[0]);
-        return visitorId;
-      }
+      // Log the visitor directly using the logVisitor function
+      const result = await logVisitor(pageLoadTime);
+
+      console.log('Visitor logged successfully');
+      const visitorId = result.visitorId;
+
+      // Save visitor ID and date to local storage
+      localStorage.setItem("visitorId", visitorId.toString());
+      localStorage.setItem("visitorDate", new Date().toISOString().split("T")[0]);
+      return visitorId;
     } catch (error) {
       // Log any errors that occur during the fetch
       console.error('Error logging visitor:', error);
