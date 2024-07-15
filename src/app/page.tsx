@@ -6,10 +6,12 @@ import {
   Menu,
   SocialMediaLinks,
   ListOfExperiences,
+  ClientWrapper,
+  AreaChartWrapper,
 } from "@/components";
 
-import ClientWrapper from "@/components/ClientWrapper";
-import AreaChartWrapper from "@/components/AreaChartWrapper";
+//import ClientWrapper from "@/components/ClientWrapper";
+//import AreaChartWrapper from "@/components/AreaChartWrapper";
 import {
   fetchWeeklySummary,
   fetchTotalVisitors,

@@ -1,7 +1,7 @@
-// lib/loadTime.ts
+// utils/loadTime.ts
 "use client";
 
-import { logVisitor } from "./action";
+import { logVisitor } from "@/lib/action";
 
 // Function to check if a new day has started
 export function isNewDay(): boolean {

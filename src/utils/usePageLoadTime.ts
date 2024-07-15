@@ -1,4 +1,4 @@
-// lib/usePageLoadTime.ts
+// utils/usePageLoadTime.ts
 import { useState, useEffect, useRef } from "react";
 import { getPageLoadTime, logVisitorInfo } from "./loadTime";
 

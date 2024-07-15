@@ -3,7 +3,7 @@
 
 import { WeeklySummary } from "@/lib/definitions";
 import AreaChartHero from "./AreaChartHero";
-import { usePageLoadTime } from "@/lib/usePageLoadTime";
+import { usePageLoadTime } from "@/utils/usePageLoadTime";
 
 function processWeeklySummary(data: WeeklySummary[]) {
   return data

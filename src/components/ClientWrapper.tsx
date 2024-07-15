@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, ReactElement } from "react";
-import useIntersectionObserver from "@/lib/useIntersectionObserver";
+import useIntersectionObserver from "@/utils/useIntersectionObserver";
 
 interface ClientWrapperProps {
   children: ReactElement;

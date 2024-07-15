@@ -1,4 +1,4 @@
-// lib/useIntersectionObserver.ts
+// utils/useIntersectionObserver.ts
 
 import { useEffect } from "react";
 
