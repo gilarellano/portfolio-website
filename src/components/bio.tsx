@@ -53,8 +53,8 @@ const Bio = () => {
           >
             👨🏽‍💻 source code
           </a>{" "}
-          for this site. Explore my projects to see how I design, document, develop, and
-          test software solutions.
+          for this site. Explore my projects to see how I design, document,
+          develop, and test software solutions.
         </p>
       </div>
     </section>

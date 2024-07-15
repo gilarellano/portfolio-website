@@ -75,7 +75,9 @@ export default function AreaChartHero({
             <MouseClickIcon className="w-[20px] h-[20px] md:w-[20px] md:h-[20px] lg:w-[18px] lg:h-[18px]" />
             <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor{" "}
-              <b className="text-primary">#{visitorId !== null ? `${visitorId}`: '--'}</b>
+              <b className="text-primary">
+                #{visitorId !== null ? `${visitorId}` : "--"}
+              </b>
             </p>
           </div>
         </div>

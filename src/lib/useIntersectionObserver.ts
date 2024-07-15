@@ -33,11 +33,11 @@ const useIntersectionObserver = (
           }
         });
       },
-      { 
+      {
         // Adjust the rootMargin to trigger the intersection earlier/later
-        rootMargin: "0px 0px -50% 0px", 
+        rootMargin: "0px 0px -50% 0px",
         // The threshold is the percentage of the target's visibility
-        threshold: 0.5 
+        threshold: 0.5,
       },
     );
 

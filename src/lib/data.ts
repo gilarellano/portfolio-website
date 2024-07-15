@@ -1,7 +1,10 @@
 // lib/data.ts
 
 import { sql } from "@vercel/postgres";
-import { unstable_noStore as noStore, unstable_cache as cache } from "next/cache";
+import {
+  unstable_noStore as noStore,
+  unstable_cache as cache,
+} from "next/cache";
 import { WeeklySummary } from "./definitions";
 
 //const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
@@ -23,8 +26,8 @@ export async function fetchWeeklySummary(): Promise<WeeklySummary[]> {
     }
   };
 
-  const cachedFetcher = cache(fetcher, ['weeklysummary'], {
-    revalidate: 1 // Revalidate weekly, 60,480s
+  const cachedFetcher = cache(fetcher, ["weeklysummary"], {
+    revalidate: 1, // Revalidate weekly, 60,480s
   });
 
   return cachedFetcher();
@@ -45,8 +48,8 @@ export async function fetchTotalVisitors(): Promise<number> {
     }
   };
 
-  const cachedFetcher = cache(fetcher, ['totalVisitors'], {
-    revalidate: 1 // Revalidate every minute, 60s
+  const cachedFetcher = cache(fetcher, ["totalVisitors"], {
+    revalidate: 1, // Revalidate every minute, 60s
   });
 
   return cachedFetcher();
@@ -68,8 +71,8 @@ export async function fetchAvgLoadTime(): Promise<string> {
     }
   };
 
-  const cachedFetcher = cache(fetcher, ['avgLoadTime'], {
-    revalidate: 1 // Revalidate every minute, 60s
+  const cachedFetcher = cache(fetcher, ["avgLoadTime"], {
+    revalidate: 1, // Revalidate every minute, 60s
   });
 
   return cachedFetcher();

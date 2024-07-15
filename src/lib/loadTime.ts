@@ -1,5 +1,5 @@
 // lib/loadTime.ts
-'use client';
+"use client";
 
 import { logVisitor } from "./action";
 
@@ -29,7 +29,7 @@ export function getPageLoadTime(): Promise<number> {
       const navigationEntries = performance.getEntriesByType(
         "navigation",
       ) as PerformanceNavigationTiming[];
-      
+
       // If the navigation entry has a non-zero duration, resolve the promise with the page load time
       if (navigationEntries.length > 0 && navigationEntries[0].duration != 0) {
         const pageLoadTime = navigationEntries[0].duration;
@@ -48,7 +48,9 @@ export function getPageLoadTime(): Promise<number> {
 let isLogging = false;
 
 // Function to log visitor info and return the visitor ID
-export async function logVisitorInfo(pageLoadTime: number): Promise<number | undefined> {
+export async function logVisitorInfo(
+  pageLoadTime: number,
+): Promise<number | undefined> {
   // Check if the visitor is new for the day
   const isNewVisitor = isNewDay();
 
@@ -62,16 +64,19 @@ export async function logVisitorInfo(pageLoadTime: number): Promise<number | und
       // Log the visitor directly using the logVisitor function
       const result = await logVisitor(pageLoadTime);
 
-      console.log('Visitor logged successfully');
+      console.log("Visitor logged successfully");
       const visitorId = result.visitorId;
 
       // Save visitor ID and date to local storage
       localStorage.setItem("visitorId", visitorId.toString());
-      localStorage.setItem("visitorDate", new Date().toISOString().split("T")[0]);
+      localStorage.setItem(
+        "visitorDate",
+        new Date().toISOString().split("T")[0],
+      );
       return visitorId;
     } catch (error) {
       // Log any errors that occur during the fetch
-      console.error('Error logging visitor:', error);
+      console.error("Error logging visitor:", error);
       return undefined;
     } finally {
       // Reset logging in progress flag
@@ -81,7 +86,7 @@ export async function logVisitorInfo(pageLoadTime: number): Promise<number | und
     // Returning visitor logic
     // Wait until logging is complete before continuing
     while (isLogging) {
-      await new Promise(resolve => setTimeout(resolve, 50)); // Wait for 50ms intervals
+      await new Promise((resolve) => setTimeout(resolve, 50)); // Wait for 50ms intervals
     }
     const visitorId = localStorage.getItem("visitorId");
     console.log("Returning visitor");
