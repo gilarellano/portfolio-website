@@ -1,4 +1,3 @@
-import exp from "constants";
 import React from "react";
 
 interface Experience {
@@ -45,7 +44,7 @@ const ListOfExperiences: React.FC = () => {
         {experiences.map((experience, index) => (
           <li
             key={index}
-            className="group relative mb-10 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50"
+            className="group relative mb-10 rounded-md transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
           >
             <a href={experience.href} target="_blank">
               <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-neutral-700/20 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
@@ -56,7 +55,7 @@ const ListOfExperiences: React.FC = () => {
                 <div className="flex flex-col">
                   <div className="flex flex-col pb-2">
                     <div className="pb-2">
-                      <h3 className="text-primary-text text-2xl lg:text-lg font-bold group-hover:text-primary">
+                      <h3 className="text-primary-text text-2xl lg:text-lg font-bold lg:group-hover:text-primary">
                         {experience.role}
                       </h3>
                       <h4 className="text-secondary-text text-sm lg:text-sm font-bold">

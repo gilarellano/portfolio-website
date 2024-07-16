@@ -68,7 +68,7 @@ const ListOfProjects: React.FC = () => {
         {projects.map((project, index) => (
           <li
             key={index}
-            className="group relative mb-12 rounded-md transition-all hover:!opacity-100 group-hover/list:opacity-50"
+            className="group relative mb-12 rounded-md lg:transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
           >
             <a href={project.href} target="_blank">
               <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-neutral-700/20 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
@@ -81,7 +81,7 @@ const ListOfProjects: React.FC = () => {
                   className="mt-1 shrink-0 w-[86px] h-[68px] rounded-custom group-hover:border-emerald-300"
                 />
                 <div className="flex flex-col gap-y-2">
-                  <h3 className="text-primary-text text-2xl leading-tight lg:text-lg font-bold group-hover:text-emerald-400">
+                  <h3 className="text-primary-text text-2xl leading-tight lg:text-lg font-bold lg:group-hover:text-emerald-400">
                     {project.title}
                   </h3>
                   <p className="leading-normal text-secondary-text text-sm lg:text-sm">
