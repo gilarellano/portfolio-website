@@ -1,8 +1,8 @@
-export { default as Avatar } from "./Avatar";
-export { default as Bio } from "./Bio";
-export { default as ListOfProjects } from "./Projects";
-export { default as Menu } from "./Menu";
-export { default as SocialMediaLinks } from "./SocialMediaLinks";
-export { default as ListOfExperiences } from "./Experiences";
-export { default as ClientWrapper } from "./ClientWrapper";
-export { default as AreaChartWrapper } from "./AreaChartWrapper";
+export { default as Avatar } from "./avatar";
+export { default as Bio } from "./bio";
+export { default as ListOfProjects } from "./projects";
+export { default as Menu } from "./menu";
+export { default as SocialMediaLinks } from "./socialmedialinks";
+export { default as ListOfExperiences } from "./experiences";
+export { default as ClientWrapper } from "./clientwrapper";
+export { default as AreaChartWrapper } from "./areachartwrapper";
