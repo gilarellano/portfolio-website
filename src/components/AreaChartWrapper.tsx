@@ -2,7 +2,7 @@
 "use client";
 
 import { WeeklySummary } from "@/lib/definitions";
-import AreaChartHero from "./areacharthero";
+import AreaChartHero from "./AreaChartHero";
 import { usePageLoadTime } from "@/utils/usePageLoadTime";
 
 function processWeeklySummary(data: WeeklySummary[]) {
