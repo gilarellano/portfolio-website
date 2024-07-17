@@ -12,7 +12,7 @@ const imageUrl = process.env.VERCEL_URL
 
 export const metadataConfig: Metadata = {
   title: {
-    default: "Gilberto Arellano | Software Engineer Portfolio",
+    default: "Gilberto Arellano",
     template: "%s | Gilberto Arellano Portfolio",
   },
   description:

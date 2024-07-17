@@ -76,7 +76,7 @@ export default function AreaChartHero({
             <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor{" "}
               <b className="text-primary">
-                #{visitorId !== null ? `${visitorId}` : "--"}
+                #{visitorId !== null ? `${visitorId}` : `${totalVisitors}`}
               </b>
             </p>
           </div>
