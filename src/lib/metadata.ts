@@ -1,13 +1,8 @@
 // src/lib/metadata.ts
 import type { Metadata, Viewport } from "next";
 
-const siteUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : process.env.BASE_URL || "http://gilber.to";
-
-const imageUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}/opengraph.png`
-  : process.env.BASE_IMAGE_URL || "http://gilber.to/opengraph.png";
+const siteUrl = process.env.BASE_URL || "http://gilber.to";
+const imageUrl = process.env.BASE_IMAGE_URL || "http://gilber.to/opengraph.png";
 
 
 export const metadataConfig: Metadata = {
