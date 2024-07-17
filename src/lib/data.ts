@@ -27,7 +27,7 @@ export async function fetchWeeklySummary(): Promise<WeeklySummary[]> {
   };
 
   const cachedFetcher = cache(fetcher, ["weeklysummary"], {
-    revalidate: 1, // Revalidate weekly, 60,480s
+    revalidate: 60480, // Revalidate weekly, 60,480s
   });
 
   return cachedFetcher();
@@ -49,7 +49,7 @@ export async function fetchTotalVisitors(): Promise<number> {
   };
 
   const cachedFetcher = cache(fetcher, ["totalVisitors"], {
-    revalidate: 1, // Revalidate every minute, 60s
+    revalidate: 60, // Revalidate every minute, 60s
   });
 
   return cachedFetcher();
@@ -72,7 +72,7 @@ export async function fetchAvgLoadTime(): Promise<string> {
   };
 
   const cachedFetcher = cache(fetcher, ["avgLoadTime"], {
-    revalidate: 1, // Revalidate every minute, 60s
+    revalidate: 60, // Revalidate every minute, 60s
   });
 
   return cachedFetcher();
