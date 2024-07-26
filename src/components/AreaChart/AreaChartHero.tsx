@@ -1,27 +1,11 @@
+// src/components/AreaChartHero.tsx
 "use client";
 
 import React from "react";
 import { MouseClickIcon, ClockIcon } from "@/assets/icons";
 import { AreaChart } from "@tremor/react";
-
-interface ChartData {
-  date: string;
-  Visitors: number;
-  AvgLoadTime: number;
-}
-
-interface AreaChartHeroProps {
-  chartData: ChartData[];
-  totalVisitors: number;
-  avgLoadTime: string;
-  pageLoadTime: number | null;
-  visitorId: number | null;
-}
-
-interface CustomTooltipProps {
-  payload?: any[];
-  active?: boolean;
-}
+import { usePageLoadTime } from "@/utils/usePageLoadTime";
+import { AreaChartHeroProps, CustomTooltipProps } from "@/lib/definitions";
 
 const valueFormatter = (number: number): string => {
   return `${number.toFixed(2)}s`;
@@ -56,9 +40,9 @@ export default function AreaChartHero({
   chartData,
   totalVisitors,
   avgLoadTime,
-  pageLoadTime,
-  visitorId,
 }: AreaChartHeroProps) {
+  const { pageLoadTime, visitorId } = usePageLoadTime();
+
   return (
     <div className="lg:max-w-[400px]">
       <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
@@ -76,7 +60,7 @@ export default function AreaChartHero({
             <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor{" "}
               <b className="text-primary">
-                #{visitorId !== null ? `${visitorId}` : `${totalVisitors}`}
+                #{visitorId !== undefined ? `${visitorId}` : "--"}
               </b>
             </p>
           </div>
@@ -90,7 +74,6 @@ export default function AreaChartHero({
           colors={["emerald"]}
           showLegend={false}
           yAxisWidth={32}
-          onValueChange={(v) => console.log(v)}
           showAnimation={true}
           animationDuration={900}
           autoMinValue={true}
@@ -105,7 +88,7 @@ export default function AreaChartHero({
               Avg. Page Load Time:
             </h2>
             <p className="text-base md:text-lg lg:text-sm font-bold text-primary-text">
-              {avgLoadTime}s
+              {`${(avgLoadTime / 1000).toFixed(2)}`}s
             </p>
           </span>
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 rounded-custom text-secondary-text">
@@ -113,13 +96,17 @@ export default function AreaChartHero({
             <p className="hidden sm:block text-base md:text-lg lg:text-sm">
               Your Time:{" "}
               <b className="text-primary inline-block w-[40px]">
-                {pageLoadTime !== null ? `${pageLoadTime}s` : "-.--s"}
+                {pageLoadTime !== undefined
+                  ? `${(pageLoadTime / 1000).toFixed(2)}s`
+                  : "-.--s"}
               </b>
             </p>
             <p className="block sm:hidden text-base md:text-lg lg:text-sm">
               Your Page Load Time:{" "}
               <b className="text-primary inline-block w-[40px]">
-                {pageLoadTime !== null ? `${pageLoadTime}s` : "-.--s"}
+                {pageLoadTime !== undefined
+                  ? `${(pageLoadTime / 1000).toFixed(2)}s`
+                  : "-.--s"}
               </b>
             </p>
           </div>
@@ -133,7 +120,6 @@ export default function AreaChartHero({
           colors={["emerald"]}
           showLegend={false}
           yAxisWidth={50}
-          onValueChange={(v) => console.log(v)}
           showAnimation={true}
           animationDuration={900}
           autoMinValue={true}

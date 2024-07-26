@@ -6,10 +6,9 @@ import {
   unstable_cache as cache,
 } from "next/cache";
 import { WeeklySummary } from "./definitions";
+import { processWeeklySummary } from "@/utils";
 
-//const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
-
-export async function fetchWeeklySummary(): Promise<WeeklySummary[]> {
+export async function fetchWeeklySummary() {
   noStore();
   const fetcher = async () => {
     try {
@@ -19,7 +18,7 @@ export async function fetchWeeklySummary(): Promise<WeeklySummary[]> {
         ORDER BY week_start DESC 
         LIMIT 20
       `;
-      return data.rows;
+      return processWeeklySummary(data.rows);
     } catch (error) {
       console.error("Database Error:", error);
       throw new Error("Failed to fetch weekly summary");
@@ -33,45 +32,25 @@ export async function fetchWeeklySummary(): Promise<WeeklySummary[]> {
   return cachedFetcher();
 }
 
-export async function fetchTotalVisitors(): Promise<number> {
+export async function fetchSiteData() {
   noStore();
   const fetcher = async () => {
     try {
-      const data = await sql<{ count: number }>`
-        SELECT COUNT(*) as count
+      const data = await sql<{ count: number; avg: number }>`
+        SELECT COUNT(*) as count, AVG(page_load_time_ms) as avg
         FROM visitors
       `;
-      return data.rows[0].count;
+      return {
+        totalVisitors: data.rows[0].count,
+        avgLoadTime: data.rows[0].avg,
+      };
     } catch (error) {
       console.error("Database Error:", error);
-      throw new Error("Failed to fetch total visitors");
+      throw new Error("Failed to fetch total visitors and average load time");
     }
   };
 
-  const cachedFetcher = cache(fetcher, ["totalVisitors"], {
-    revalidate: 60, // Revalidate every minute, 60s
-  });
-
-  return cachedFetcher();
-}
-
-export async function fetchAvgLoadTime(): Promise<string> {
-  noStore();
-  const fetcher = async () => {
-    try {
-      // Converts from ms to seconds
-      const data = await sql<{ avg: number }>`
-        SELECT AVG(page_load_time_ms) / 1000.0 as avg
-        FROM visitors
-      `;
-      return data.rows[0].avg.toFixed(2);
-    } catch (error) {
-      console.error("Database Error:", error);
-      throw new Error("Failed to fetch average load time");
-    }
-  };
-
-  const cachedFetcher = cache(fetcher, ["avgLoadTime"], {
+  const cachedFetcher = cache(fetcher, ["totalVisitorsAndAvgLoadTime"], {
     revalidate: 60, // Revalidate every minute, 60s
   });
 
