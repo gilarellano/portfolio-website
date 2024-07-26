@@ -12,3 +12,20 @@ export interface WeeklySummary {
   visitor_count: number;
   avg_load_time_ms: number;
 }
+
+export interface ChartData {
+  date: string;
+  Visitors: number;
+  AvgLoadTime: number;
+}
+
+export interface AreaChartHeroProps {
+  chartData: ChartData[];
+  totalVisitors: number;
+  avgLoadTime: number;
+}
+
+export interface CustomTooltipProps {
+  payload?: any[];
+  active?: boolean;
+}
