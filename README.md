@@ -32,4 +32,5 @@ $PROJECT_ROOT
 ```
 
 ## 🎨 Front-End Design
-The front-end design of my portfolio website is inspired by [Brittany Chiang Site](https://brittanychiang.com/). Their clean and intuitive design principles guided the look and feel of my site.
+
+The front-end design of my portfolio website is inspired by [Brittany Chiang Site](https://brittanychiang.com/). 
