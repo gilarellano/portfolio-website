@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from "next";
 const siteUrl = process.env.BASE_URL || "http://gilber.to";
 const imageUrl = process.env.BASE_IMAGE_URL || "http://gilber.to/opengraph.png";
 
-
 export const metadataConfig: Metadata = {
   title: {
     default: "Gilberto Arellano",
