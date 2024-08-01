@@ -35,7 +35,7 @@ const Bio = () => {
             target="_blank"
             className="text-primary-text font-bold whitespace-nowrap hover:text-primary hover:underline hover:decoration-2 underline-offset-2"
           >
-            🌮 small taqueria
+            🌮 taqueria
           </a>
           , where I learned a lot about managing, delegating, and running a
           business. It was a great experience that taught me the value of
