@@ -6,7 +6,7 @@ import {
   unstable_cache as cache,
 } from "next/cache";
 import { WeeklySummary } from "./definitions";
-import { processWeeklySummary } from "@/utils";
+import { processWeeklySummary } from "@/utils/index";
 
 export async function fetchWeeklySummary() {
   noStore();
@@ -26,7 +26,7 @@ export async function fetchWeeklySummary() {
   };
 
   const cachedFetcher = cache(fetcher, ["weeklysummary"], {
-    revalidate: 60480, // Revalidate weekly, 60,480s
+    revalidate: 60, // For now revalidate every minute, but supposed to revalidate weekly, 60,480s
   });
 
   return cachedFetcher();

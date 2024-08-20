@@ -78,23 +78,7 @@ export async function calculateWeeklySummary(): Promise<void> {
       VALUES (${weekStart.toISOString()}, ${weekEnd.toISOString()}, ${weeklyVisitorCount}, ${averageLoadTime})
     `;
 
-    // Invalidate and update the cache
-    const fetcher = async () => {
-      const data = await sql<WeeklySummary>`
-        SELECT week_start, week_end, visitor_count, avg_load_time_ms
-        FROM weeklysummary
-        ORDER BY week_start DESC
-        LIMIT 20
-      `;
-      return data.rows;
-    };
-
-    // Update the cache
-    await cache(fetcher, ["weeklySummary"], {
-      revalidate: 604700, // Revalidate every week (60 * 60 * 24 * 7 seconds)
-    })();
-
-    console.log("Weekly summary calculated and cache updated successfully");
+    console.log("Weekly summary calculated");
   } catch (error) {
     console.error("Error calculating weekly summary:", error);
     throw new Error("Failed to calculate weekly summary");
