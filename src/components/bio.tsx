@@ -53,6 +53,14 @@ const Bio = () => {
           >
             👨🏽‍💻 source code
           </a>{" "}
+          or{" "} 
+          <a
+            href="https://www.figma.com/design/xukmU5squhP9sHETmApbyK/Personal-Portfolio-Website?node-id=103-985&t=DY88M8zzrCUA4mzc-10"
+            target="_blank"
+            className="text-primary-text font-bold whitespace-nowrap hover:text-primary hover:underline hover:decoration-2 underline-offset-2"
+          >
+            🎨 figma design
+          </a>{" "}
           for this site. Explore my projects to see how I design, document,
           develop, and test software solutions.
         </p>
