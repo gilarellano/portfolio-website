@@ -24,7 +24,7 @@ const experiences: Experience[] = [
     role: "Restaurant Co-Owner",
     company: "La Capilla, Berkeley",
     description:
-      "Oversaw daily operations, generating $50-$60k in monthly sales. Implemented inventory management and supply chain optimization, managed payroll and accounts with QuickBooks Online, and led a team, demonstrating strong leadership and operational management skills.",
+      "I managed a team of 10-12 employees, overseeing daily operations and ensuring a positive and productive workplace environment. I was responsible for hiring, training, and mentoring staff, focusing on building a cohesive team and maintaining high morale. My leadership approach emphasized clear communication, teamwork, and a commitment to delivering excellent customer service, which contributed to generating $50-$60k in monthly sales.",
   },
 ];
 
