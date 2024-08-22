@@ -16,7 +16,7 @@ const experiences: Experience[] = [
     role: "Operations and Technology Administrator",
     company: "Gilberto Arellano Windows, San Francisco",
     description:
-      "Designed and developed a C++ program to streamline window quote calculations, reducing process time by over 80%. Managed systems design, developed safety-critical code, and maintained a CRM dashboard on Monday.com to ensure timely project delivery and effective client communication.",
+      "I developed a C++ program that calculates window quotes based on measurements, wood, glass, and window type, reducing the calculation process by over 90%. I also created and maintain a CRM dashboard on Monday.com, managing 20-30 client projects and improving email response times from 1-2 days to about 4 hours.",
   },
   {
     href: "https://www.yelp.com/biz/la-capilla-berkeley",
