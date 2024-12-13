@@ -16,7 +16,7 @@ export async function fetchWeeklySummary() {
         SELECT week_start, week_end, visitor_count, avg_load_time_ms
         FROM weeklysummary 
         ORDER BY week_start DESC 
-        LIMIT 4
+        LIMIT 30
       `;
       return processWeeklySummary(data.rows);
     } catch (error) {
@@ -26,7 +26,7 @@ export async function fetchWeeklySummary() {
   };
 
   const cachedFetcher = cache(fetcher, ["weeklysummary"], {
-    revalidate: 60, // For now revalidate every minute, but supposed to revalidate weekly, 60,480s
+    revalidate: 1, // For now revalidate every minute, but supposed to revalidate weekly, 60,480s
   });
 
   return cachedFetcher();
