@@ -76,7 +76,7 @@ export default function AreaChartHero({
           yAxisWidth={32}
           showAnimation={true}
           animationDuration={900}
-          autoMinValue={true}
+          autoMinValue={false}
           customTooltip={customTooltip}
         />
       </div>
