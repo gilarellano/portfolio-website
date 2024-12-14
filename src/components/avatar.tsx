@@ -10,10 +10,11 @@ const Avatar = () => {
         <Image
           src="/headshot.webp"
           alt="Avatar"
-          width={96}
-          height={96}
-          style={{ width: "auto", height: "auto" }}
-          className="aspect-auto rounded-full object-cover"
+          width={384}
+          height={384}
+          priority
+          quality={95}
+          className="rounded-full object-cover"
         />
       </div>
       <div className="flex flex-col items-start">
