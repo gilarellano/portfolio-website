@@ -1,22 +1,45 @@
 // lib/actions.ts
 "use server";
 import { sql } from "@vercel/postgres";
-import { unstable_cache as cache } from "next/cache";
-import { WeeklySummary } from "./definitions";
+import { headers } from "next/headers";
+import { isbot } from "isbot";
 
-// Function to log visitor info and return the visitor ID
+// Reject page-load times outside a plausible human range (ms).
+// The historical bot cluster sat at ~20-30ms; real browser navigations are >100ms.
+const MIN_PLAUSIBLE_LOAD_MS = 50;
+const MAX_PLAUSIBLE_LOAD_MS = 60_000;
+
+// Log a real visitor, returning the cleaned cumulative visitor count.
+// Returns { visitorId: null } when the request is filtered as a bot so the
+// UI can show "#--" without recording anything.
 export async function logVisitor(
   pageLoadTime: number,
-): Promise<{ visitorId: number }> {
+): Promise<{ visitorId: number | null }> {
+  // --- Server-side gate: tamper-resistant, runs even if the action is called directly ---
+  const userAgent = headers().get("user-agent") ?? "";
+  if (isbot(userAgent)) {
+    return { visitorId: null }; // known crawler / monitor / link-preview bot
+  }
+  if (
+    !Number.isFinite(pageLoadTime) ||
+    pageLoadTime < MIN_PLAUSIBLE_LOAD_MS ||
+    pageLoadTime > MAX_PLAUSIBLE_LOAD_MS
+  ) {
+    return { visitorId: null }; // implausible timing — almost certainly automated
+  }
+
   try {
-    const result = await sql`
+    await sql`
       INSERT INTO visitors (visit_date, page_load_time_ms)
       VALUES (NOW(), ${pageLoadTime})
-      RETURNING id
     `;
 
-    const visitorId = result.rows[0].id;
-    return { visitorId };
+    // Return the cumulative (bot-filtered) count so "You're visitor #N"
+    // stays consistent with the "Total Visitors" stat.
+    const countResult = await sql<{ count: number }>`
+      SELECT COUNT(*)::int AS count FROM visitors
+    `;
+    return { visitorId: countResult.rows[0].count };
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to log visitor");

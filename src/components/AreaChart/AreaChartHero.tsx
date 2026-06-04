@@ -52,7 +52,7 @@ export default function AreaChartHero({
               Total Visitors:
             </h2>
             <p className="text-base md:text-lg lg:text-sm font-bold text-primary-text">
-              {totalVisitors}
+              {Number(totalVisitors).toLocaleString("en-US")}
             </p>
           </span>
           <div className="flex flex-row items-center gap-x-1 py-1 px-2 text-secondary-text rounded-custom">
@@ -60,7 +60,7 @@ export default function AreaChartHero({
             <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor{" "}
               <b className="text-primary">
-                #{visitorId !== undefined ? `${visitorId}` : "--"}
+                #{visitorId !== undefined ? visitorId.toLocaleString("en-US") : "--"}
               </b>
             </p>
           </div>

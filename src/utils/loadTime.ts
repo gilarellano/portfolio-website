@@ -64,6 +64,12 @@ export async function logVisitorInfo(
       // Log the visitor directly using the logVisitor function
       const result = await logVisitor(pageLoadTime);
 
+      // Server filtered this as a bot / implausible timing — don't record it.
+      if (result.visitorId === null) {
+        console.log("Visit not logged (filtered as bot/implausible)");
+        return undefined;
+      }
+
       console.log("Visitor logged successfully");
       const visitorId = result.visitorId;
 
