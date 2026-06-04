@@ -96,3 +96,151 @@ html {
 }*/
 
 /* styles/globals.css or any of your global CSS files */
+
+/* ============================================================
+   Grainy-gradient background  (see components/GradientBackground.tsx)
+   Soft emerald patches drift, turn, and stretch over the near-black base;
+   an SVG film-grain overlay sits on top. Each patch is a radial gradient
+   that fades to transparent, so the green stays concentrated (~a third of
+   each blob) and the canvas reads mostly black. Animation is transform-only
+   (translate + rotate + non-uniform scale) → stays on the GPU.
+   Flip data-intensity "whisper" | "noticeable" live in devtools to compare.
+   ============================================================ */
+.grain-bg {
+  /* default preset = noticeable */
+  --blob-alpha: 0.18;
+  --grain-opacity: 0.16;
+}
+.grain-bg[data-intensity="whisper"] {
+  --blob-alpha: 0.1;
+  --grain-opacity: 0.12;
+}
+.grain-bg[data-intensity="noticeable"] {
+  --blob-alpha: 0.18;
+  --grain-opacity: 0.16;
+}
+
+.grain-blob {
+  position: absolute;
+  filter: blur(70px);
+  will-change: transform;
+}
+
+/* emerald-500 — upper left */
+.grain-blob--1 {
+  width: 52vw;
+  height: 52vw;
+  top: -12vw;
+  left: -10vw;
+  background: radial-gradient(
+    circle closest-side,
+    rgb(16 185 129 / var(--blob-alpha)) 0%,
+    transparent 100%
+  );
+  animation: grain-drift-1 34s ease-in-out infinite alternate;
+}
+
+/* emerald-400 — right, lower */
+.grain-blob--2 {
+  width: 40vw;
+  height: 40vw;
+  top: 8vw;
+  right: -12vw;
+  background: radial-gradient(
+    circle closest-side,
+    rgb(52 211 153 / var(--blob-alpha)) 0%,
+    transparent 100%
+  );
+  animation: grain-drift-2 42s ease-in-out -8s infinite alternate;
+}
+
+/* brand emerald (#6ee7b7) — bottom, slightly right */
+.grain-blob--3 {
+  width: 48vw;
+  height: 48vw;
+  right: 2vw;
+  bottom: -14vw;
+  background: radial-gradient(
+    circle closest-side,
+    rgb(110 231 183 / var(--blob-alpha)) 0%,
+    transparent 100%
+  );
+  animation: grain-drift-3 30s ease-in-out -4s infinite alternate;
+}
+
+/* emerald-600 — left, upper-mid */
+.grain-blob--4 {
+  width: 36vw;
+  height: 36vw;
+  bottom: 6vw;
+  left: -12vw;
+  background: radial-gradient(
+    circle closest-side,
+    rgb(5 150 105 / var(--blob-alpha)) 0%,
+    transparent 100%
+  );
+  animation: grain-drift-4 38s ease-in-out -12s infinite alternate;
+}
+
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+/* Drift + turn + stretch. Non-uniform scale makes each soft circle breathe
+   into shifting ellipses; the 3 stops + alternate avoid an obvious loop. */
+@keyframes grain-drift-1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1);
+  }
+  50% {
+    transform: translate3d(3vw, 4vw, 0) rotate(8deg) scale(1.15, 0.9);
+  }
+  100% {
+    transform: translate3d(5vw, 2vw, 0) rotate(-6deg) scale(0.95, 1.12);
+  }
+}
+@keyframes grain-drift-2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05, 0.95);
+  }
+  50% {
+    transform: translate3d(-4vw, 3vw, 0) rotate(-9deg) scale(0.9, 1.15);
+  }
+  100% {
+    transform: translate3d(-6vw, 5vw, 0) rotate(6deg) scale(1.1, 0.95);
+  }
+}
+@keyframes grain-drift-3 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1);
+  }
+  50% {
+    transform: translate3d(-3vw, -4vw, 0) rotate(7deg) scale(1.12, 0.92);
+  }
+  100% {
+    transform: translate3d(-5vw, -2vw, 0) rotate(-8deg) scale(0.94, 1.1);
+  }
+}
+@keyframes grain-drift-4 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05, 1);
+  }
+  50% {
+    transform: translate3d(4vw, -3vw, 0) rotate(-7deg) scale(0.92, 1.14);
+  }
+  100% {
+    transform: translate3d(6vw, -5vw, 0) rotate(9deg) scale(1.1, 0.93);
+  }
+}
+
+/* Respect users who ask for less motion: freeze the drift; each patch rests
+   at its base position/shape (the 0% keyframe). */
+@media (prefers-reduced-motion: reduce) {
+  .grain-blob {
+    animation: none;
+  }
+}
