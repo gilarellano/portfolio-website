@@ -54,8 +54,9 @@ export async function calculateWeeklySummary(): Promise<void> {
       ORDER BY week_end DESC
       LIMIT 1
     `;
-    const previousWeekEndDate = mostRecentWeekResult.rows[0]?.week_end || new Date(0);
-    
+    const previousWeekEndDate =
+      mostRecentWeekResult.rows[0]?.week_end || new Date(0);
+
     // Step 2: Count visitors since the last summary
     const newVisitorsResult = await sql`
       SELECT 
@@ -64,9 +65,10 @@ export async function calculateWeeklySummary(): Promise<void> {
       FROM visitors
       WHERE visit_date > ${previousWeekEndDate}
     `;
-    
+
     const weeklyVisitorCount = Number(newVisitorsResult.rows[0].visitor_count);
-    const averageLoadTime = Number(newVisitorsResult.rows[0].avg_load_time) || 0;
+    const averageLoadTime =
+      Number(newVisitorsResult.rows[0].avg_load_time) || 0;
 
     // Only create a new summary if there are new visitors
     if (weeklyVisitorCount > 0) {
@@ -92,7 +94,7 @@ export async function calculateWeeklySummary(): Promise<void> {
         weekStart,
         weekEnd,
         weeklyVisitorCount,
-        averageLoadTime
+        averageLoadTime,
       });
     }
   } catch (error) {

@@ -6,6 +6,7 @@ import { MouseClickIcon, ClockIcon } from "@/assets/icons";
 import { AreaChart } from "@tremor/react";
 import { usePageLoadTime } from "@/utils/usePageLoadTime";
 import { AreaChartHeroProps, CustomTooltipProps } from "@/lib/definitions";
+import { statCardClass } from "./styles";
 
 const valueFormatter = (number: number): string => {
   return `${number.toFixed(2)}s`;
@@ -45,7 +46,7 @@ export default function AreaChartHero({
 
   return (
     <div className="lg:max-w-[400px]">
-      <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
+      <div className={statCardClass}>
         <div className="flex flex-row justify-between w-full px-0.5">
           <span className="hidden sm:flex flex-row gap-x-1 items-center">
             <h2 className="text-base md:text-lg lg:text-sm text-secondary-text">
@@ -60,7 +61,10 @@ export default function AreaChartHero({
             <p className="text-base md:text-lg lg:text-sm">
               You&apos;re Visitor{" "}
               <b className="text-primary">
-                #{visitorId !== undefined ? visitorId.toLocaleString("en-US") : "--"}
+                #
+                {visitorId !== undefined
+                  ? visitorId.toLocaleString("en-US")
+                  : "--"}
               </b>
             </p>
           </div>
@@ -81,7 +85,7 @@ export default function AreaChartHero({
         />
       </div>
 
-      <div className="flex flex-col items-center bg-neutral-700/20 shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg mb-8 p-4 rounded-custom">
+      <div className={statCardClass}>
         <div className="flex flex-row justify-between w-full px-0.5">
           <span className="hidden sm:flex flex-row gap-x-1 items-center">
             <h2 className="text-base md:text-lg lg:text-sm text-secondary-text">
