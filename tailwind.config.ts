@@ -75,6 +75,8 @@ const config: Config = {
         },
       },
       boxShadow: {
+        // custom: shared stat-card / hover inset highlight
+        'panel-inset': 'inset 0 1px 0 0 rgba(148,163,184,0.1)',
         // light
         'tremor-input': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
         'tremor-card':

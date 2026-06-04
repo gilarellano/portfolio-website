@@ -1,4 +1,5 @@
 import React from "react";
+import SectionHeader from "./SectionHeader";
 
 const Bio = () => {
   return (
@@ -6,11 +7,7 @@ const Bio = () => {
       id="bio"
       className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-background px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">
-          About
-        </h2>
-      </div>
+      <SectionHeader title="About" />
       <div className="leading-relaxed text-secondary-text text-base">
         <p className="mb-4">
           I graduated from Chapman University with a Bachelor&apos;s in Software
@@ -53,7 +50,7 @@ const Bio = () => {
           >
             👨🏽‍💻 source code
           </a>{" "}
-          or{" "} 
+          or{" "}
           <a
             href="https://www.figma.com/design/xukmU5squhP9sHETmApbyK/Personal-Portfolio-Website?node-id=103-985&t=DY88M8zzrCUA4mzc-10"
             target="_blank"

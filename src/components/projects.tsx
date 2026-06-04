@@ -1,5 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import SectionHeader from "./SectionHeader";
+import HoverHighlight from "./HoverHighlight";
+import TechPills from "./TechPills";
 
 interface Project {
   href: string;
@@ -57,12 +60,7 @@ const projects: Project[] = [
 const ListOfProjects: React.FC = () => {
   return (
     <section id="projects" className="mb-24 scroll-mt-16 lg:scroll-mt-24">
-      {/* Projects Header for smaller screens */}
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-background px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">
-          Projects
-        </h2>
-      </div>
+      <SectionHeader title="Projects" />
 
       <ol className="group/list flex flex-col" role="list">
         {projects.map((project, index) => (
@@ -71,7 +69,7 @@ const ListOfProjects: React.FC = () => {
             className="group relative mb-12 rounded-md lg:transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
           >
             <a href={project.href} target="_blank">
-              <div className="absolute -inset-x-6 -inset-y-4 z-0 hidden lg:block rounded-md motion-reduce:transition-none group-hover:bg-neutral-700/20 group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] group-hover:drop-shadow-lg"></div>
+              <HoverHighlight />
               <div className="relative z-10 flex flex-row gap-x-4">
                 <Image
                   src={project.imgSrc}
@@ -87,11 +85,7 @@ const ListOfProjects: React.FC = () => {
                   <p className="leading-normal text-secondary-text text-sm lg:text-sm">
                     {project.description}
                   </p>
-                  <ul className="flex flex-grid flex-wrap pt-2 gap-3 text-primary text-sm lg:text-xs font-extralight *:rounded-full *:bg-emerald-600/20 *:px-3 *:py-1">
-                    {project.technologies.map((tech, techIndex) => (
-                      <li key={techIndex}>{tech}</li>
-                    ))}
-                  </ul>
+                  <TechPills items={project.technologies} />
                 </div>
               </div>
             </a>

@@ -52,7 +52,7 @@ const Menu: React.FC<MenuProps> = ({
     <nav className="nav hidden lg:block">
       <ul
         role="list"
-        className="gap-1 bg-opacity-10 mt-8 p-1.5 flex flex-col border-custom rounded-custom w-fit h-fit bg-neutral-700/20 drop-shadow-xl shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]"
+        className="gap-1 bg-opacity-10 mt-8 p-1.5 flex flex-col border-custom rounded-custom w-fit h-fit bg-neutral-700/20 drop-shadow-xl shadow-panel-inset"
       >
         {menuItems.map((item, index) => {
           const isActive = activeItem === item.href;
