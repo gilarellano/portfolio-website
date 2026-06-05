@@ -110,6 +110,9 @@ html {
   /* default preset = noticeable */
   --blob-alpha: 0.18;
   --grain-opacity: 0.16;
+  /* Blob travel speed. 1 = base · 1.5 = current · 2-3 = frenetic · 0.5 = calm.
+     Scrub this live in devtools (select .grain-bg) to find your pace. */
+  --blob-speed: 1.5;
 }
 .grain-bg[data-intensity="whisper"] {
   --blob-alpha: 0.1;
@@ -126,7 +129,7 @@ html {
   will-change: transform;
 }
 
-/* emerald-500 — upper left */
+/* emerald-500 — starts upper left, sweeps the top + right */
 .grain-blob--1 {
   width: 52vw;
   height: 52vw;
@@ -137,10 +140,10 @@ html {
     rgb(16 185 129 / var(--blob-alpha)) 0%,
     transparent 100%
   );
-  animation: grain-drift-1 34s ease-in-out infinite alternate;
+  animation: grain-drift-1 calc(26s / var(--blob-speed)) ease-in-out infinite;
 }
 
-/* emerald-400 — right, lower */
+/* emerald-400 — starts right, drifts across to the left */
 .grain-blob--2 {
   width: 40vw;
   height: 40vw;
@@ -151,10 +154,10 @@ html {
     rgb(52 211 153 / var(--blob-alpha)) 0%,
     transparent 100%
   );
-  animation: grain-drift-2 42s ease-in-out -8s infinite alternate;
+  animation: grain-drift-2 calc(22s / var(--blob-speed)) ease-in-out -8s infinite;
 }
 
-/* brand emerald (#6ee7b7) — bottom, slightly right */
+/* brand emerald (#6ee7b7) — rises from the bottom up the middle */
 .grain-blob--3 {
   width: 48vw;
   height: 48vw;
@@ -165,10 +168,10 @@ html {
     rgb(110 231 183 / var(--blob-alpha)) 0%,
     transparent 100%
   );
-  animation: grain-drift-3 30s ease-in-out -4s infinite alternate;
+  animation: grain-drift-3 calc(30s / var(--blob-speed)) ease-in-out -4s infinite;
 }
 
-/* emerald-600 — left, upper-mid */
+/* emerald-600 — starts lower left, climbs up the right */
 .grain-blob--4 {
   width: 36vw;
   height: 36vw;
@@ -179,7 +182,7 @@ html {
     rgb(5 150 105 / var(--blob-alpha)) 0%,
     transparent 100%
   );
-  animation: grain-drift-4 38s ease-in-out -12s infinite alternate;
+  animation: grain-drift-4 calc(24s / var(--blob-speed)) ease-in-out -12s infinite;
 }
 
 .grain-overlay {
@@ -190,50 +193,76 @@ html {
   background-size: 220px 220px;
 }
 
-/* Drift + turn + stretch. Non-uniform scale makes each soft circle breathe
-   into shifting ellipses; the 3 stops + alternate avoid an obvious loop. */
+/* Lava-lamp roaming: each blob travels a large closed circuit across the
+   screen (0% == 100%, so it loops seamlessly with `infinite` — no retrace),
+   turning and stretching via rotate + non-uniform scale as it goes. Distinct
+   circuits + negative delays keep them from clumping. */
 @keyframes grain-drift-1 {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1);
   }
+  25% {
+    transform: translate3d(48vw, 16vw, 0) rotate(10deg) scale(1.1, 0.92);
+  }
   50% {
-    transform: translate3d(3vw, 4vw, 0) rotate(8deg) scale(1.15, 0.9);
+    transform: translate3d(68vw, 52vw, 0) rotate(-8deg) scale(0.94, 1.16);
+  }
+  75% {
+    transform: translate3d(22vw, 40vw, 0) rotate(12deg) scale(1.14, 0.9);
   }
   100% {
-    transform: translate3d(5vw, 2vw, 0) rotate(-6deg) scale(0.95, 1.12);
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1);
   }
 }
 @keyframes grain-drift-2 {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05, 0.95);
   }
+  25% {
+    transform: translate3d(-44vw, 26vw, 0) rotate(-9deg) scale(0.92, 1.14);
+  }
   50% {
-    transform: translate3d(-4vw, 3vw, 0) rotate(-9deg) scale(0.9, 1.15);
+    transform: translate3d(-64vw, -8vw, 0) rotate(8deg) scale(1.12, 0.94);
+  }
+  75% {
+    transform: translate3d(-24vw, -26vw, 0) rotate(-11deg) scale(0.96, 1.1);
   }
   100% {
-    transform: translate3d(-6vw, 5vw, 0) rotate(6deg) scale(1.1, 0.95);
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05, 0.95);
   }
 }
 @keyframes grain-drift-3 {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1);
   }
+  25% {
+    transform: translate3d(-30vw, -34vw, 0) rotate(9deg) scale(1.12, 0.93);
+  }
   50% {
-    transform: translate3d(-3vw, -4vw, 0) rotate(7deg) scale(1.12, 0.92);
+    transform: translate3d(-54vw, -56vw, 0) rotate(-7deg) scale(0.95, 1.15);
+  }
+  75% {
+    transform: translate3d(-16vw, -22vw, 0) rotate(11deg) scale(1.1, 0.92);
   }
   100% {
-    transform: translate3d(-5vw, -2vw, 0) rotate(-8deg) scale(0.94, 1.1);
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1);
   }
 }
 @keyframes grain-drift-4 {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05, 1);
   }
+  25% {
+    transform: translate3d(40vw, -28vw, 0) rotate(-8deg) scale(0.93, 1.13);
+  }
   50% {
-    transform: translate3d(4vw, -3vw, 0) rotate(-7deg) scale(0.92, 1.14);
+    transform: translate3d(64vw, -54vw, 0) rotate(10deg) scale(1.14, 0.92);
+  }
+  75% {
+    transform: translate3d(26vw, -20vw, 0) rotate(-12deg) scale(0.96, 1.1);
   }
   100% {
-    transform: translate3d(6vw, -5vw, 0) rotate(9deg) scale(1.1, 0.93);
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05, 1);
   }
 }
 
