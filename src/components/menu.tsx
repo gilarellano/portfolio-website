@@ -1,12 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  BioIcon,
-  ProjectIcon,
-  ExperienceIcon,
-  ResumeIcon,
-} from "@/assets/icons";
+import { BioIcon, ProjectIcon } from "@/assets/icons";
 
 interface MenuItem {
   href: string;
@@ -31,17 +26,6 @@ const menuItems: MenuItem[] = [
     label: "Projects",
     icon: ProjectIcon,
   },
-  {
-    href: "#experiences",
-    label: "Experiences",
-    icon: ExperienceIcon,
-  },
-  {
-    href: "/ArellanoGilbertoResume.pdf",
-    label: "Resume",
-    icon: ResumeIcon,
-    isExternal: true,
-  },
 ];
 
 const Menu: React.FC<MenuProps> = ({
@@ -65,7 +49,7 @@ const Menu: React.FC<MenuProps> = ({
               {/* Prevents from adding an additional layer of the bg-emerald when hovered over an active item */}
               <a
                 href={item.href}
-                className={`flex flex-row gap-1.5 items-center rounded-md py-1.5 px-3 
+                className={`flex flex-row gap-1.5 items-center rounded-md py-1.5 px-3
                 ${isActive ? "bg-emerald-600/10" : "hover:bg-emerald-600/10"}`}
                 onClick={() => !item.isExternal && handleClick(item.href)}
                 target={item.isExternal ? "_blank" : "_self"}

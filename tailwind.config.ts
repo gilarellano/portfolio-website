@@ -12,6 +12,9 @@ const config: Config = {
     transparent: 'transparent',
     current: 'currentColor',
     extend: {
+      fontFamily: {
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
       colors: {
         // light mode
         tremor: {

@@ -1,16 +1,10 @@
 // app/page.tsx
-import {
-  Avatar,
-  Bio,
-  ListOfProjects,
-  Menu,
-  SocialMediaLinks,
-  ListOfExperiences,
-} from "@/components";
+import { Bio, ListOfProjects, Menu, SocialMediaLinks } from "@/components";
 
 import ClientWrapper from "@/components/ClientWrapper";
 import AreaChartWrapper from "@/components/AreaChart/AreaChartWrapper";
 import AreaChartWrapperSkeleton from "@/components/AreaChart/AreaChartWrapperSkeleton";
+import VisitorGlobeWrapper from "@/components/VisitorGlobe/VisitorGlobeWrapper";
 import { Suspense } from "react";
 
 export default async function Home() {
@@ -20,7 +14,8 @@ export default async function Home() {
         {/* Left Column */}
         <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
           <div>
-            <Avatar />
+            {/* <Avatar /> — temporarily hidden while iterating on the globe */}
+            <VisitorGlobeWrapper />
             <Suspense fallback={<AreaChartWrapperSkeleton />}>
               <AreaChartWrapper />
             </Suspense>
@@ -35,7 +30,6 @@ export default async function Home() {
         <div className="pt-24 lg:w-1/2 lg:py-24">
           <Bio />
           <ListOfProjects />
-          <ListOfExperiences />
         </div>
       </div>
     </div>

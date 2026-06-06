@@ -91,6 +91,74 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Greeting wave — plays once when the visitor's location resolves. */
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+}
+.animate-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2.2s ease-in-out 1;
+}
+
+/* Old-school hard terminal cursor blink (on/off, no fade). */
+@keyframes cursorBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.animate-cursor-blink {
+  animation: cursorBlink 1.06s step-end infinite;
+}
+
+/* Gentle fade-in used to ease the greeting in alongside the globe. */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Subtle idle "bob" on the résumé download icon — a gentle "download me" cue. */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+.animate-bob {
+  animation: bob 2.4s ease-in-out infinite;
+}
+
 /* {
    Helps transition from light to dark mode, easier on the eyes
 }*/
