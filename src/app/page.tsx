@@ -1,5 +1,11 @@
 // app/page.tsx
-import { Bio, ListOfProjects, Menu, SocialMediaLinks } from "@/components";
+import {
+  Bio,
+  ListOfProjects,
+  Menu,
+  SocialMediaLinks,
+  ResumeButton,
+} from "@/components";
 
 import ClientWrapper from "@/components/ClientWrapper";
 import AreaChartWrapper from "@/components/AreaChart/AreaChartWrapper";
@@ -22,6 +28,9 @@ export default async function Home() {
             <ClientWrapper>
               <Menu />
             </ClientWrapper>
+            <div className="mt-6">
+              <ResumeButton />
+            </div>
           </div>
           <SocialMediaLinks />
         </div>
