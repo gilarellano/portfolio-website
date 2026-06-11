@@ -3,7 +3,7 @@ import Image from "next/image";
 import VisitorGlobeWrapper from "./VisitorGlobe/VisitorGlobeWrapper";
 import LocationGreetingWrapper from "./VisitorGlobe/LocationGreetingWrapper";
 
-// Facts in the antfu.me format: muted label column, bold linked values.
+// antfu.me-style facts: muted label column, bold linked values.
 const factLink =
   "text-primary-text font-bold whitespace-nowrap hover:text-primary hover:underline hover:decoration-2 underline-offset-2";
 
@@ -11,10 +11,8 @@ const Bio = () => {
   return (
     // `relative` anchors the absolutely-parked globe to this section.
     <section id="bio" className="relative isolate mb-24 scroll-mt-24">
-      {/* Globe — parked LEFT at xl (absolute, right ~22% tucked under the
-          column); below xl it sits in-flow, centered, caption beneath.
-          KNOBS: xl:-top-10 = vertical (more negative = higher, toward nav);
-                 xl:translate-x-[22%] = how far it pokes into the column. */}
+      {/* Globe — parked left at xl (absolute); in-flow + centered below xl.
+          xl:-top-10 raises it; xl:translate-x-[22%] sets how far it overlaps. */}
       <div className="mb-6 flex flex-col items-center xl:absolute xl:-top-10 xl:right-full xl:translate-x-[22%]">
         <VisitorGlobeWrapper />
         <div className="mt-3 xl:hidden">
@@ -22,19 +20,14 @@ const Bio = () => {
         </div>
       </div>
 
-      {/* Greeting — traces the sphere's upper-right curve at the top of the
-          column (xl only).
-          ┌─ CLOSER / FARTHER FROM THE GLOBE: change `xl:pl-6` below.
-          │    smaller pl = closer (e.g. pl-2); use a negative margin like
-          │    `xl:-ml-3` to sit ONTO the globe's edge.
-          └─ STAIRCASE STEP between the two lines: the `ml-4` on the city
-               line in components/VisitorGlobe/LocationGreeting.tsx. */}
+      {/* Greeting traces the globe's curve (xl only). xl:pl-* nudges it
+          closer/farther; the staircase step is the city's ml-4 in
+          LocationGreeting.tsx. */}
       <div className="relative z-10 mb-24 hidden xl:block xl:pl-4">
         <LocationGreetingWrapper variant="hero" />
       </div>
 
-      {/* Identity — picture first, left-aligned and squared to the column,
-          directly above the bio. Ignores the globe (sphere passes behind). */}
+      {/* Identity — squared to the column; the globe passes behind it. */}
       <div className="relative z-10 mb-6 flex items-center gap-4">
         <Image
           src="/headshot.webp"
@@ -55,11 +48,11 @@ const Bio = () => {
         </div>
       </div>
 
-      {/* Positioning — squared to the column */}
+      {/* Positioning */}
       <p className="relative z-10 mb-8 leading-relaxed text-secondary-text text-base">
-        I build automated systems for businesses in manufacturing and
-        services: quoting engines, CRM workflows, and the data tools that
-        keep a production shop running.
+        I build automated systems for businesses in manufacturing and services:
+        quoting engines, CRM workflows, and the data tools that keep a
+        production shop running.
       </p>
 
       {/* Facts */}

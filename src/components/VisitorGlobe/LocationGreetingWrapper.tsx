@@ -1,6 +1,4 @@
-// components/VisitorGlobe/LocationGreetingWrapper.tsx
-// Server component: resolves the visitor's location (same edge-header logic
-// as the globe) and renders the typed greeting.
+// Resolves the visitor's location (same as the globe) and renders the greeting.
 import { readVisitorLocation } from "./VisitorGlobeWrapper";
 import LocationGreeting from "./LocationGreeting";
 
@@ -9,5 +7,7 @@ export default function LocationGreetingWrapper({
 }: {
   variant?: "under" | "hero";
 }) {
-  return <LocationGreeting location={readVisitorLocation()} variant={variant} />;
+  return (
+    <LocationGreeting location={readVisitorLocation()} variant={variant} />
+  );
 }

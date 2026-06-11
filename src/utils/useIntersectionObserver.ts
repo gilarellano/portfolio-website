@@ -1,25 +1,13 @@
-// utils/useIntersectionObserver.ts
-
 import { useEffect } from "react";
 
-/**
- * Scroll-spy: tracks which `<section id>` is currently in view and reports it
- * as the active section (e.g. "#projects") so the nav can highlight it.
- *
- * Uses scroll position rather than IntersectionObserver visibility ratios, so
- * that tall sections (which can never be ">= 50% visible") still activate
- * correctly. The active section is the last one whose top has scrolled past a
- * line ~30% down the viewport — i.e. the section you're currently reading.
- *
- * @param setActiveSection - setter called with the active section id ("#id").
- */
+// Scroll-spy: reports the active `<section id>` so the nav can highlight it.
+// Uses scroll position (not visibility ratios) so tall sections still activate
+// — active = the last section whose top has passed ~30% of the viewport.
 const useIntersectionObserver = (
   setActiveSection: (section: string) => void,
 ) => {
   useEffect(() => {
-    // Runs synchronously on scroll — the work is two getBoundingClientRect
-    // calls, and React bails out when the value hasn't changed, so a
-    // throttle adds fragility without buying anything.
+    // Sync on scroll: two rect reads, and React bails on unchanged values.
     const update = () => {
       const sections = Array.from(
         document.querySelectorAll<HTMLElement>("section[id]"),

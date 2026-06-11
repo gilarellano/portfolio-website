@@ -1,4 +1,3 @@
-// app/page.tsx
 import { Bio, ListOfProjects, TopNav } from "@/components";
 
 import ClientWrapper from "@/components/ClientWrapper";

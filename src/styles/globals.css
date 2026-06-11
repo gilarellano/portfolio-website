@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* styles/global.css */
-/* Dark is the default theme (no attribute). */
+/* Dark theme (default). */
 :root {
   --primary-color: #6ee7b7; /* emerald */
   --background-color: #202023;
@@ -12,15 +11,13 @@
   --border-color: #444444;
   --veil-rgb: 32 32 35; /* nav veil tint, matches background */
   --hover-highlight: rgba(64, 64, 64, 0.2); /* list-item hover wash */
-  --hover-shadow: rgba(0, 0, 0, 0.35); /* drop shadow under the hover wash */
+  --hover-shadow: rgba(0, 0, 0, 0.35);
   --border-radius: 6px;
   --border-width: 1.5px;
   --font-family: "Inter", sans-serif;
 }
 
-/* Light theme — craftz.dog-style warm paper. emerald-700 (not 600) for
-   accents: ~4.7:1 contrast on the cream background, passing WCAG AA for
-   normal text, where emerald-600 (~3.3:1) would fail. */
+/* Light theme: warm paper; emerald-700 for AA contrast on cream. */
 [data-theme="light"] {
   --primary-color: #047857; /* emerald-700 */
   --background-color: #f0e7db;
@@ -28,22 +25,18 @@
   --secondary-text-color: #4a5568;
   --border-color: #d6cabb;
   --veil-rgb: 240 231 219;
-  /* Matched to the dark-mode relation: the dark wash lifts the panel ~5%
-     above the background and its shadow sits at ~1.13:1 contrast — these
-     reproduce the same ratios on cream (warm-hued so nothing goes gray). */
+  /* Lift + shadow tuned to match dark mode's subtle ratios on cream. */
   --hover-highlight: rgba(255, 255, 255, 0.45);
   --hover-shadow: rgba(122, 101, 76, 0.12);
 }
 
-/* Apply the variables */
 body {
   background-color: var(--background-color);
   color: var(--primary-text-color);
   font-family: var(--font-family);
 }
 
-/* Added briefly to <html> while toggling themes so every color change eases
-   in together instead of snapping. */
+/* Eases every color change during a theme toggle. */
 html.theme-transition,
 html.theme-transition * {
   transition:
@@ -100,16 +93,13 @@ html.theme-transition * {
   .stroke-primary {
     stroke: var(--primary-color);
   }
-  /* Add more utilities for any new variables */
 }
-
-/* styles/globals.css or any of your global CSS files */
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Greeting wave — plays once when the visitor's location resolves. */
+/* Greeting wave — plays once when the location resolves. */
 @keyframes wave {
   0%,
   60%,
@@ -136,7 +126,7 @@ html {
   animation: wave 2.2s ease-in-out 1;
 }
 
-/* Old-school hard terminal cursor blink (on/off, no fade). */
+/* Hard terminal cursor blink. */
 @keyframes cursorBlink {
   0%,
   100% {
@@ -150,7 +140,7 @@ html {
   animation: cursorBlink 1.06s step-end infinite;
 }
 
-/* Gentle fade-in used to ease the greeting in alongside the globe. */
+/* Fade-in for the greeting. */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -163,9 +153,7 @@ html {
   animation: fadeIn 1s ease forwards;
 }
 
-/* Feathered veil behind the sticky nav: the blur + dark tint fade out over
-   the bottom ~12px (via mask) instead of stopping at a hard line. Tint kept
-   at 0.8 by preference — the blur carries readability over light content. */
+/* Blur + tint behind the nav, feathered out at the bottom edge. */
 .nav-veil {
   position: absolute;
   inset: 0 0 -12px 0;
@@ -182,8 +170,7 @@ html {
   mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
 }
 
-/* Staggered content entrance (antfu.me-style): each top-level block of the
-   main column slides up + fades in, one after another. */
+/* Staggered slide-up entrance for the main column's blocks. */
 @keyframes slide-enter {
   from {
     opacity: 0;
@@ -196,9 +183,7 @@ html {
 }
 @media (prefers-reduced-motion: no-preference) {
   .slide-enter-content > * {
-    /* "backwards" (not "both") so no transform lingers after the entrance —
-       a persistent transform would create containing blocks under the sticky
-       header and complicate future absolutely/fixed-positioned children. */
+    /* "backwards" so no transform lingers under the sticky nav. */
     animation: slide-enter 0.7s ease backwards;
   }
   .slide-enter-content > *:nth-child(1) {
@@ -214,9 +199,3 @@ html {
     animation-delay: 0.5s;
   }
 }
-
-/* {
-   Helps transition from light to dark mode, easier on the eyes
-}*/
-
-/* styles/globals.css or any of your global CSS files */

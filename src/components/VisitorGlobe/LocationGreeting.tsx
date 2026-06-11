@@ -1,11 +1,9 @@
-// components/VisitorGlobe/LocationGreeting.tsx
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import type { VisitorLocation } from "./VisitorGlobeWrapper";
 
-// Mirrors the globe's spin-up time so the reveal choreography stays in sync
-// even though the greeting renders separately from the globe.
+// Mirrors the globe's spin-up time so the reveal stays in sync.
 const LOADING_MS = 1900;
 
 type GreetingMode = "loading" | "deleting" | "typing" | "done";
@@ -36,12 +34,12 @@ function GreetingTypewriter({
     return () => clearInterval(id);
   }, [mode]);
 
-  // Kick off the reveal once the location has "loaded".
+  // Start the reveal once the location has "loaded".
   useEffect(() => {
     if (revealed && mode === "loading") setMode("deleting");
   }, [revealed, mode]);
 
-  // Back-space whatever is currently on screen.
+  // Back-space whatever is on screen.
   useEffect(() => {
     if (mode !== "deleting") return;
     if (displayed.length === 0) {
@@ -66,7 +64,7 @@ function GreetingTypewriter({
     return () => clearTimeout(id);
   }, [mode, displayed, place]);
 
-  // Fire once when the place finishes typing (so the hand can wave).
+  // Fire once when typing finishes (so the hand can wave).
   useEffect(() => {
     if (mode === "done" && !typedFired.current) {
       typedFired.current = true;
@@ -74,7 +72,7 @@ function GreetingTypewriter({
     }
   }, [mode, onTyped]);
 
-  // Hard-blink only while idle (loading / done); stay solid while in motion.
+  // Blink only while idle; stay solid while in motion.
   const idle = mode === "loading" || mode === "done";
 
   return (
@@ -90,10 +88,8 @@ function GreetingTypewriter({
   );
 }
 
-// The "HELLO FROM 👋 / <city>" block.
-// - "under":  centered caption beneath the globe (smaller screens)
-// - "hero":   left-aligned in the hero row, with a staircase indent so the
-//             two lines trace the globe's upper-right curve
+// "under": caption centered beneath the globe.
+// "hero": left-aligned with a staircase indent to trace the globe's curve.
 export default function LocationGreeting({
   location,
   variant = "under",

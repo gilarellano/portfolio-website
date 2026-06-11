@@ -1,6 +1,4 @@
-// components/VisitorGlobe/VisitorGlobeWrapper.tsx
-// Server component: resolves the visitor's approximate location from Vercel's
-// free edge geo headers (no API, no key, no DB) and hands it to the client globe.
+// Resolves the visitor's location from Vercel's edge geo headers (no API/key/DB).
 import { headers } from "next/headers";
 import VisitorGlobe from "./VisitorGlobe";
 
@@ -28,10 +26,14 @@ export function readVisitorLocation(): VisitorLocation {
     };
   }
 
-  // Localhost has no geo headers. Fall back to a default *only* in dev so the
-  // component is fully testable; in production we prefer an honest generic line.
+  // Localhost has no geo headers — dev-only fallback so it stays testable.
   if (process.env.NODE_ENV !== "production") {
-    return { city: "San Francisco", region: "CA", lat: 37.7749, lng: -122.4194 };
+    return {
+      city: "San Francisco",
+      region: "CA",
+      lat: 37.7749,
+      lng: -122.4194,
+    };
   }
   return { city: null, region: null, lat: null, lng: null };
 }

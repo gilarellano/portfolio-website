@@ -17,9 +17,7 @@ interface ProductCardProps {
   codeHref?: string;
 }
 
-// "This is a real product, in production" — rendered as the first item of the
-// projects list so it shares the same width, hover highlight, and dimming
-// behavior as its siblings.
+// Lead item of the projects list, so it shares the list's width + hover behavior.
 const ProductCard: React.FC<ProductCardProps> = ({
   title,
   tagline,
@@ -33,7 +31,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   <li className="group relative mb-14 rounded-md lg:transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
     <HoverHighlight />
     <div className="relative z-10 flex flex-col gap-y-3">
-      {/* Title leads, with a live badge — a shipped product, not a project */}
+      {/* Title + live badge */}
       <div className="flex items-center gap-3">
         <h3 className="text-2xl font-bold leading-tight text-primary-text lg:text-xl">
           {title}

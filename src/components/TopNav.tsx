@@ -16,8 +16,7 @@ interface TopNavProps {
   children?: React.ReactNode;
 }
 
-// The name doubles as the "Bio" link — the underline slides between it and
-// Projects as you scroll (or click), instead of links toggling on/off.
+// The name doubles as the Bio link; one underline slides between it and Projects.
 const navItems = [
   { href: "#bio", label: "Gilberto Arellano", isName: true },
   { href: "#projects", label: "Projects", isName: false },

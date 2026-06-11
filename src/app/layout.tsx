@@ -12,8 +12,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = metadataConfig;
 export const viewport = viewportConfig;
 
-// Applies the saved theme before first paint so a light-mode visitor never
-// sees a dark flash (and vice versa). Dark is the default (no attribute).
+// Apply the saved theme before first paint to avoid a flash (dark is default).
 const themeInitScript = `try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}`;
 
 export default function RootLayout({

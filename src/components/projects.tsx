@@ -13,9 +13,7 @@ interface Project {
   technologies: string[];
 }
 
-// Lead slot — a real product in production at the family business, not a
-// class project. TODO: swap liveHref/codeHref + screenshot + copy for the
-// real production app when the demo is ready.
+// Lead product card. TODO: swap demo/code/screenshot/copy when the live app ships.
 const product = {
   title: "Sash Solutions",
   tagline: "Used daily at our family window business.",
@@ -36,7 +34,14 @@ const projects: Project[] = [
     title: "Academic Advising Tool",
     description:
       "Developed and maintained a comprehensive academic advising tool, deployed on AWS EC2 and Vercel, using TypeScript, React, and Next.js. Implemented unit and integration tests with Jest, and generated code quality reports using SonarQube.",
-    technologies: ["AWS", "TypeScript", "React", "Next.js", "Jest", "SonarQube"],
+    technologies: [
+      "AWS",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Jest",
+      "SonarQube",
+    ],
   },
   {
     href: "https://gilarellano.github.io/LSTM_SpeechEmulation_Chelsea/",
@@ -56,8 +61,7 @@ const projects: Project[] = [
   },
 ];
 
-// One list: the product leads, side projects follow. Sharing the list means
-// identical width, hover highlight, and dim-siblings behavior across all.
+// One list so the product and side projects share width + hover behavior.
 const ListOfProjects: React.FC = () => {
   return (
     <section id="projects" className="mb-24 scroll-mt-24">

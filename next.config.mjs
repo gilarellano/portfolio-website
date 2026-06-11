@@ -25,9 +25,8 @@ const nextConfig = {
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i
 
-    // iCloud Drive evicts webpack's on-disk cache mid-write (its
-    // "*.pack.gz_ -> *.pack.gz" rename fails with ENOENT). Keep the cache in
-    // memory during dev so it never writes those files. (.next is on iCloud.)
+    // .next is on iCloud, which evicts webpack's on-disk cache mid-write
+    // (ENOENT on the pack rename). An in-memory cache avoids those writes.
     if (dev) {
       config.cache = { type: 'memory' }
     }

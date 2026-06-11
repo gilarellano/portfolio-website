@@ -4,8 +4,7 @@ import React from "react";
 import SparkArea from "./SparkArea";
 import { AreaChartHeroProps } from "@/lib/definitions";
 
-// Compact spark stats (visitors + avg load) sized to sit inside the top nav.
-// Hidden below lg — the nav is too crowded for them on small screens.
+// Compact spark stats for the nav; hidden below lg (no room).
 export default function SparkStats({
   chartData,
   totalVisitors,

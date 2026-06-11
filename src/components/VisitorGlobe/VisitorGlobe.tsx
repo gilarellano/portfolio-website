@@ -1,17 +1,15 @@
-// components/VisitorGlobe/VisitorGlobe.tsx
 "use client";
 
 import { useEffect, useRef } from "react";
 import createGlobe from "cobe";
 import type { VisitorLocation } from "./VisitorGlobeWrapper";
 
-// How long the globe "spins up" (loading their data) before settling on them.
-// Kept in sync with LocationGreeting's reveal timing.
+// Spin-up time before the globe settles on the visitor (synced with the greeting).
 const LOADING_MS = 1900;
 
 type Phase = "loading" | "reveal" | "live";
 
-// Rotation [phi, theta] that brings a given lat/long to face the viewer.
+// Rotation [phi, theta] that brings a lat/long to face the viewer.
 function locationToAngles(lat: number, lng: number): [number, number] {
   return [
     Math.PI - ((lng * Math.PI) / 180 - Math.PI / 2),
@@ -27,8 +25,7 @@ function shortestAngleDelta(current: number, target: number): number {
   return diff;
 }
 
-// The sphere only — the typed greeting lives in LocationGreeting so layouts
-// can place them independently.
+// The sphere only; the typed greeting lives in LocationGreeting.
 export default function VisitorGlobe({
   location,
 }: {
@@ -39,7 +36,7 @@ export default function VisitorGlobe({
 
   const hasFocus = location.lat !== null && location.lng !== null;
 
-  // After the spin-up: settle on the visitor (reveal) or keep gently turning.
+  // After the spin-up: settle on the visitor, or keep gently turning.
   useEffect(() => {
     const t = setTimeout(() => {
       phaseRef.current = hasFocus ? "reveal" : "live";
@@ -64,18 +61,16 @@ export default function VisitorGlobe({
       ? locationToAngles(location.lat as number, location.lng as number)
       : null;
 
-    const SPIN_FAST = 0.04; // "loading their data"
-    const SPIN_SLOW = 0.004; // gently alive once settled
+    const SPIN_FAST = 0.04;
+    const SPIN_SLOW = 0.004;
     const EASE = 0.045;
 
-    // Theme-aware palette, applied per-frame so the globe follows the
-    // light/dark toggle live (marker stays emerald, matched per theme).
+    // Theme-aware palette, re-read per frame so the globe follows the toggle live.
     const palette = () =>
       document.documentElement.getAttribute("data-theme") === "light"
         ? {
             dark: 0,
-            // A couple of shades darker than the cream background, mirroring
-            // how the dark globe sits just off the dark background.
+            // a couple shades darker than the cream bg (mirrors the dark globe)
             baseColor: [0.84, 0.8, 0.73] as [number, number, number],
             markerColor: [0.016, 0.471, 0.341] as [number, number, number], // emerald-700
             glowColor: [0.9, 0.86, 0.79] as [number, number, number],

@@ -5,9 +5,7 @@ import { RiSunLine, RiMoonLine } from "@remixicon/react";
 
 type Theme = "dark" | "light";
 
-// Sun/moon toggle. Dark is the default (no data-theme attribute); light sets
-// data-theme="light" on <html>. The choice persists in localStorage and is
-// applied pre-paint by the inline script in layout.tsx.
+// Sun/moon theme toggle; persists to localStorage (applied pre-paint in layout.tsx).
 export default function ThemeToggle() {
   // null until mounted — the server doesn't know the visitor's theme.
   const [theme, setTheme] = useState<Theme | null>(null);

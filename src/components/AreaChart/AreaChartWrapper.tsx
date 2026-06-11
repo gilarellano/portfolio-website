@@ -1,4 +1,3 @@
-// components/AreaChartWrapper.tsx
 import SparkStats from "./SparkStats";
 import { fetchWeeklySummary, fetchSiteData } from "@/lib/data";
 
