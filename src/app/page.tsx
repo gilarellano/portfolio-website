@@ -10,7 +10,7 @@ export default async function Home() {
       {/* Sticky top toolbar: nav + live spark stats */}
       <ClientWrapper>
         <TopNav>
-          <Suspense fallback={<div className="hidden h-8 w-56 lg:block" />}>
+          <Suspense fallback={<div className="hidden h-8 w-56 wide:block" />}>
             <AreaChartWrapper />
           </Suspense>
         </TopNav>

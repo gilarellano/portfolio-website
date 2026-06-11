@@ -28,12 +28,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
   liveHref,
   codeHref,
 }) => (
-  <li className="group relative mb-14 rounded-md lg:transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+  <li className="group relative mb-14 rounded-md wide:transition-all wide:hover:!opacity-100 wide:group-hover/list:opacity-50">
     <HoverHighlight />
     <div className="relative z-10 flex flex-col gap-y-3">
       {/* Title + live badge */}
       <div className="flex items-center gap-3">
-        <h3 className="text-2xl font-bold leading-tight text-primary-text lg:text-xl">
+        <h3 className="text-2xl font-bold leading-tight text-primary-text wide:text-xl">
           {title}
         </h3>
         <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-600/10 px-2.5 py-0.5 font-mono text-[11px] text-primary">

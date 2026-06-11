@@ -12,6 +12,12 @@ const config: Config = {
     transparent: 'transparent',
     current: 'currentColor',
     extend: {
+      // Custom breakpoint ≈ half of a 1920 screen. Below it the layout stacks
+      // (mobile/tablet); at/above it the desktop layout engages: globe beside
+      // the content, spark stats in the nav, and project hover boxes.
+      screens: {
+        wide: '900px',
+      },
       fontFamily: {
         mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },

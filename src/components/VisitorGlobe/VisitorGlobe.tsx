@@ -148,7 +148,7 @@ export default function VisitorGlobe({
 
   return (
     <div
-      className="relative aspect-square w-40 sm:w-48 lg:w-52 xl:w-80"
+      className="relative aspect-square w-40 sm:w-48 wide:w-80"
       aria-label="Visitor location globe"
     >
       <canvas

@@ -66,7 +66,7 @@ const TopNav: React.FC<TopNavProps> = ({
               className={
                 item.isName
                   ? "text-base font-bold tracking-tight text-primary-text transition-colors hover:text-primary"
-                  : `text-sm transition-colors duration-200 ${
+                  : `hidden sm:inline text-sm transition-colors duration-200 ${
                       active === item.href
                         ? "text-primary-text"
                         : "text-secondary-text hover:text-primary"
@@ -92,7 +92,7 @@ const TopNav: React.FC<TopNavProps> = ({
         <div className="flex items-center gap-5">
           {children}
           <span
-            className="hidden h-7 w-px bg-neutral-700/70 lg:block"
+            className="hidden h-7 w-px bg-neutral-700/70 wide:block"
             aria-hidden
           />
           <div className="flex items-center gap-4">
@@ -110,24 +110,10 @@ const TopNav: React.FC<TopNavProps> = ({
             >
               <LinkedInIcon className="h-5 w-5 fill-secondary transition-colors hover:fill-primary" />
             </a>
-            <a
-              href="https://github.com/gilarellano/portfolio-website"
-              target="_blank"
-              aria-label="Source code"
-            >
-              <SourceCodeIcon className="h-5 w-5 stroke-secondary stroke-2 transition-colors hover:stroke-primary" />
+            <a>
+              <ThemeToggle />
             </a>
           </div>
-          <a
-            href="/ArellanoGilbertoResume.pdf"
-            target="_blank"
-            aria-label="Download résumé"
-            className="flex items-center gap-1.5 text-sm text-secondary-text transition-colors hover:text-primary"
-          >
-            <ResumeIcon className="h-4 w-4 stroke-current stroke-2" />
-            <span className="hidden sm:inline">Resume</span>
-          </a>
-          <ThemeToggle />
         </div>
       </nav>
     </header>

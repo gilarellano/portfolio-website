@@ -89,7 +89,7 @@ function GreetingTypewriter({
 }
 
 // "under": caption centered beneath the globe.
-// "hero": left-aligned with a staircase indent to trace the globe's curve.
+// "hero": right-aligned with a staircase indent to trace the globe's top-left curve.
 export default function LocationGreeting({
   location,
   variant = "under",
@@ -120,7 +120,7 @@ export default function LocationGreeting({
   return (
     <div
       className={`animate-fade-in flex flex-col ${
-        isHero ? "items-start text-left" : "items-center text-center"
+        isHero ? "items-end text-right" : "items-center text-center"
       }`}
     >
       <span className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-secondary-text">
@@ -131,7 +131,7 @@ export default function LocationGreeting({
       </span>
       <span
         className={`whitespace-nowrap font-mono text-lg font-bold leading-tight text-primary-text sm:text-xl ${
-          isHero ? "ml-4" : ""
+          isHero ? "mr-8" : ""
         }`}
       >
         <GreetingTypewriter

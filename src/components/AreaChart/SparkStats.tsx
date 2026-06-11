@@ -4,14 +4,14 @@ import React from "react";
 import SparkArea from "./SparkArea";
 import { AreaChartHeroProps } from "@/lib/definitions";
 
-// Compact spark stats for the nav; hidden below lg (no room).
+// Compact spark stats for the nav; hidden below `wide` (no room).
 export default function SparkStats({
   chartData,
   totalVisitors,
   avgLoadTime,
 }: AreaChartHeroProps) {
   return (
-    <div className="hidden items-center gap-x-6 font-mono lg:flex">
+    <div className="hidden items-center gap-x-6 font-mono wide:flex">
       <div className="flex items-center gap-2">
         <div className="flex flex-col leading-tight">
           <span className="text-[11px] text-secondary-text">Visitors</span>

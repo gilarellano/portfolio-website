@@ -11,19 +11,17 @@ const Bio = () => {
   return (
     // `relative` anchors the absolutely-parked globe to this section.
     <section id="bio" className="relative isolate mb-24 scroll-mt-24">
-      {/* Globe — parked left at xl (absolute); in-flow + centered below xl.
-          xl:-top-10 raises it; xl:translate-x-[22%] sets how far it overlaps. */}
-      <div className="mb-6 flex flex-col items-center xl:absolute xl:-top-10 xl:right-full xl:translate-x-[22%]">
+      {/* Globe — right-anchored at every size (absolute), so it sits on the right
+          and passes behind the content. right-0 anchors it, translate-x slides it
+          out, -top-10 raises it. Size scales per breakpoint in VisitorGlobe.tsx. */}
+      <div className="absolute right-0 -top-10 z-0 translate-x-[5%]">
         <VisitorGlobeWrapper />
-        <div className="mt-3 xl:hidden">
-          <LocationGreetingWrapper />
-        </div>
       </div>
 
-      {/* Greeting traces the globe's curve (xl only). xl:pl-* nudges it
-          closer/farther; the staircase step is the city's ml-4 in
+      {/* Greeting traces the globe's top-left curve at every size. pr-* nudges it
+          toward/away from the globe; the staircase step is the city's mr-* in
           LocationGreeting.tsx. */}
-      <div className="relative z-10 mb-24 hidden xl:block xl:pl-4">
+      <div className="relative z-10 mb-12 pr-28 wide:mb-28 wide:pr-64">
         <LocationGreetingWrapper variant="hero" />
       </div>
 
@@ -58,7 +56,7 @@ const Bio = () => {
       {/* Facts */}
       <div className="relative z-10 space-y-2 text-base">
         <p>
-          <span className="inline-block w-28 font-mono text-sm text-secondary-text">
+          <span className="block w-28 font-mono text-sm text-secondary-text sm:inline-block">
             Working at
           </span>
           <a
@@ -70,7 +68,7 @@ const Bio = () => {
           </a>
         </p>
         <p>
-          <span className="inline-block w-28 font-mono text-sm text-secondary-text">
+          <span className="block w-28 font-mono text-sm text-secondary-text sm:inline-block">
             Created
           </span>
           <a href="#projects" className={factLink}>
@@ -78,7 +76,7 @@ const Bio = () => {
           </a>
         </p>
         <p>
-          <span className="inline-block w-28 font-mono text-sm text-secondary-text">
+          <span className="block w-28 font-mono text-sm text-secondary-text sm:inline-block">
             This site
           </span>
           <a
@@ -88,11 +86,11 @@ const Bio = () => {
           >
             👨🏽‍💻 Source code
           </a>
-          <span className="mx-2 text-secondary-text">·</span>
+          <span className="mx-2 hidden text-secondary-text sm:inline">·</span>
           <a
             href="https://www.figma.com/design/xukmU5squhP9sHETmApbyK/Personal-Portfolio-Website?node-id=103-985&t=DY88M8zzrCUA4mzc-10"
             target="_blank"
-            className={factLink}
+            className={`${factLink} hidden sm:inline`}
           >
             🎨 Figma design
           </a>

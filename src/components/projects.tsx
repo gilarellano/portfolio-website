@@ -71,7 +71,7 @@ const ListOfProjects: React.FC = () => {
         {projects.map((project, index) => (
           <li
             key={index}
-            className="group relative mb-12 rounded-md lg:transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
+            className="group relative mb-12 rounded-md wide:transition-all wide:hover:!opacity-100 wide:group-hover/list:opacity-50"
           >
             <a href={project.href} target="_blank">
               <HoverHighlight />
@@ -84,10 +84,10 @@ const ListOfProjects: React.FC = () => {
                   className="mt-1 shrink-0 w-[86px] h-[68px] rounded-custom group-hover:border-emerald-300"
                 />
                 <div className="flex flex-col gap-y-2">
-                  <h3 className="text-primary-text text-2xl leading-tight lg:text-lg font-bold lg:group-hover:text-emerald-400">
+                  <h3 className="text-primary-text text-2xl leading-tight wide:text-lg font-bold wide:group-hover:text-emerald-400">
                     {project.title}
                   </h3>
-                  <p className="leading-normal text-secondary-text text-sm lg:text-sm">
+                  <p className="leading-normal text-secondary-text text-sm">
                     {project.description}
                   </p>
                   <TechPills items={project.technologies} />
