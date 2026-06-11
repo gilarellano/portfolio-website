@@ -11,7 +11,7 @@ export type VisitorLocation = {
   lng: number | null;
 };
 
-function readVisitorLocation(): VisitorLocation {
+export function readVisitorLocation(): VisitorLocation {
   const h = headers();
   const rawCity = h.get("x-vercel-ip-city");
   const rawRegion = h.get("x-vercel-ip-country-region");

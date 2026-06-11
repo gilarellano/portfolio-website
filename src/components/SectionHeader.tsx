@@ -1,13 +1,12 @@
 import React from "react";
 
-// Sticky mobile section header (visually hidden on lg).
-// Shared by Bio / Projects / Experiences.
+// Visible section header for the single-column layout — mono label + a thin
+// rule that fills the rest of the row.
 const SectionHeader = ({ title }: { title: string }) => (
-  <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-background px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-    <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">
-      {title}
-    </h2>
-  </div>
+  <h2 className="mb-6 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.2em] text-secondary-text">
+    {title}
+    <span className="h-px flex-1 bg-neutral-700" aria-hidden />
+  </h2>
 );
 
 export default SectionHeader;

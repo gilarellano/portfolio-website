@@ -5,3 +5,4 @@ export { default as Menu } from "./menu";
 export { default as SocialMediaLinks } from "./socialmedialinks";
 export { default as ListOfExperiences } from "./experiences";
 export { default as ResumeButton } from "./ResumeButton";
+export { default as TopNav } from "./TopNav";

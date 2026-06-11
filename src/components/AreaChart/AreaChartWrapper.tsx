@@ -1,5 +1,5 @@
 // components/AreaChartWrapper.tsx
-import AreaChartHero from "./AreaChartHero";
+import SparkStats from "./SparkStats";
 import { fetchWeeklySummary, fetchSiteData } from "@/lib/data";
 
 export default async function AreaChartWrapper() {
@@ -9,7 +9,7 @@ export default async function AreaChartWrapper() {
   ]);
 
   return (
-    <AreaChartHero
+    <SparkStats
       chartData={weeklySummary}
       totalVisitors={totalVisitors}
       avgLoadTime={avgLoadTime}

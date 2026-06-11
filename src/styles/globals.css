@@ -3,30 +3,36 @@
 @tailwind utilities;
 
 /* styles/global.css */
+/* Dark is the default theme (no attribute). */
 :root {
   --primary-color: #6ee7b7; /* emerald */
   --background-color: #202023;
   --primary-text-color: #e0e0e0;
   --secondary-text-color: #b0b0b0;
   --border-color: #444444;
+  --veil-rgb: 32 32 35; /* nav veil tint, matches background */
+  --hover-highlight: rgba(64, 64, 64, 0.2); /* list-item hover wash */
+  --hover-shadow: rgba(0, 0, 0, 0.35); /* drop shadow under the hover wash */
   --border-radius: 6px;
   --border-width: 1.5px;
   --font-family: "Inter", sans-serif;
 }
 
-/* Dark Theme */
-[data-theme="dark"] {
-  --primary-color: #6ee7b7; /* emerald */
-  --background-color: #2e2e2e;
-  --primary-text-color: #e0e0e0;
-  --font-family: "Inter", sans-serif;
-}
-
+/* Light theme — craftz.dog-style warm paper. emerald-700 (not 600) for
+   accents: ~4.7:1 contrast on the cream background, passing WCAG AA for
+   normal text, where emerald-600 (~3.3:1) would fail. */
 [data-theme="light"] {
-  --primary-color: #6ee7b7; /* emerald */
-  --background-color: #fff;
-  --primary-text-color: #e0e0e0;
-  --font-family: "Inter", sans-serif;
+  --primary-color: #047857; /* emerald-700 */
+  --background-color: #f0e7db;
+  --primary-text-color: #1a202c;
+  --secondary-text-color: #4a5568;
+  --border-color: #d6cabb;
+  --veil-rgb: 240 231 219;
+  /* Matched to the dark-mode relation: the dark wash lifts the panel ~5%
+     above the background and its shadow sits at ~1.13:1 contrast — these
+     reproduce the same ratios on cream (warm-hued so nothing goes gray). */
+  --hover-highlight: rgba(255, 255, 255, 0.45);
+  --hover-shadow: rgba(122, 101, 76, 0.12);
 }
 
 /* Apply the variables */
@@ -34,6 +40,18 @@ body {
   background-color: var(--background-color);
   color: var(--primary-text-color);
   font-family: var(--font-family);
+}
+
+/* Added briefly to <html> while toggling themes so every color change eases
+   in together instead of snapping. */
+html.theme-transition,
+html.theme-transition * {
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    color 0.4s ease,
+    fill 0.4s ease,
+    stroke 0.4s ease !important;
 }
 
 @layer utilities {
@@ -145,18 +163,56 @@ html {
   animation: fadeIn 1s ease forwards;
 }
 
-/* Subtle idle "bob" on the résumé download icon — a gentle "download me" cue. */
-@keyframes bob {
-  0%,
-  100% {
+/* Feathered veil behind the sticky nav: the blur + dark tint fade out over
+   the bottom ~12px (via mask) instead of stopping at a hard line. Tint kept
+   at 0.8 by preference — the blur carries readability over light content. */
+.nav-veil {
+  position: absolute;
+  inset: 0 0 -12px 0;
+  pointer-events: none;
+  background: rgb(var(--veil-rgb) / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+}
+
+/* Staggered content entrance (antfu.me-style): each top-level block of the
+   main column slides up + fades in, one after another. */
+@keyframes slide-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(2px);
-  }
 }
-.animate-bob {
-  animation: bob 2.4s ease-in-out infinite;
+@media (prefers-reduced-motion: no-preference) {
+  .slide-enter-content > * {
+    /* "backwards" (not "both") so no transform lingers after the entrance —
+       a persistent transform would create containing blocks under the sticky
+       header and complicate future absolutely/fixed-positioned children. */
+    animation: slide-enter 0.7s ease backwards;
+  }
+  .slide-enter-content > *:nth-child(1) {
+    animation-delay: 0.08s;
+  }
+  .slide-enter-content > *:nth-child(2) {
+    animation-delay: 0.22s;
+  }
+  .slide-enter-content > *:nth-child(3) {
+    animation-delay: 0.36s;
+  }
+  .slide-enter-content > *:nth-child(4) {
+    animation-delay: 0.5s;
+  }
 }
 
 /* {

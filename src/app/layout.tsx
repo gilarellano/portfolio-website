@@ -12,16 +12,21 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = metadataConfig;
 export const viewport = viewportConfig;
 
+// Applies the saved theme before first paint so a light-mode visitor never
+// sees a dark flash (and vice versa). Dark is the default (no attribute).
+const themeInitScript = `try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className} ${jetbrainsMono.variable} leading-relaxed antialiased selection:bg-emerald-400 selection:text-emerald-900`}
       >
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {children}
         <Analytics />
         <SpeedInsights />

@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import SectionHeader from "./SectionHeader";
 import HoverHighlight from "./HoverHighlight";
 import TechPills from "./TechPills";
+import ProductCard from "./ProductCard";
 
 interface Project {
   href: string;
@@ -13,6 +13,21 @@ interface Project {
   technologies: string[];
 }
 
+// Lead slot — a real product in production at the family business, not a
+// class project. TODO: swap liveHref/codeHref + screenshot + copy for the
+// real production app when the demo is ready.
+const product = {
+  title: "Sash Solutions",
+  tagline: "Used daily at our family window business.",
+  description:
+    "A quoting app that turns a window's measurements, wood, glass, and type into an instant, accurate estimate — cutting quote prep by roughly 90%.",
+  imgSrc: "/sash_project_screenshot.webp",
+  imgAlt: "Sash Solutions window quoting app",
+  technologies: ["C++", "Documentation", "CI/CD"],
+  liveHref: "https://gilarellano.github.io/sash-solutions/",
+  codeHref: "https://github.com/gilarellano/sash-solutions",
+};
+
 const projects: Project[] = [
   {
     href: "https://github.com/gilarellano/academic-advising-tool",
@@ -21,14 +36,7 @@ const projects: Project[] = [
     title: "Academic Advising Tool",
     description:
       "Developed and maintained a comprehensive academic advising tool, deployed on AWS EC2 and Vercel, using TypeScript, React, and Next.js. Implemented unit and integration tests with Jest, and generated code quality reports using SonarQube.",
-    technologies: [
-      "AWS",
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Jest",
-      "SonarQube",
-    ],
+    technologies: ["AWS", "TypeScript", "React", "Next.js", "Jest", "SonarQube"],
   },
   {
     href: "https://gilarellano.github.io/LSTM_SpeechEmulation_Chelsea/",
@@ -46,23 +54,16 @@ const projects: Project[] = [
       "Matplotlib",
     ],
   },
-  {
-    href: "https://gilarellano.github.io/sash-solutions/",
-    imgSrc: "/sash_project_screenshot.webp",
-    imgAlt: "Window Quote Project Screenshot",
-    title: "Sash Solutions - Window Quote Project",
-    description:
-      "Designed and developed 'Sash Solutions,' a C++ based quote/estimate calculator that reduced quote calculation time by 90%. Organized comprehensive documentation and established CI/CD pipelines.",
-    technologies: ["C++", "Documentation", "CI/CD"],
-  },
 ];
 
+// One list: the product leads, side projects follow. Sharing the list means
+// identical width, hover highlight, and dim-siblings behavior across all.
 const ListOfProjects: React.FC = () => {
   return (
-    <section id="projects" className="mb-24 scroll-mt-16 lg:scroll-mt-24">
-      <SectionHeader title="Projects" />
-
+    <section id="projects" className="mb-24 scroll-mt-24">
       <ol className="group/list flex flex-col" role="list">
+        <ProductCard {...product} />
+
         {projects.map((project, index) => (
           <li
             key={index}
