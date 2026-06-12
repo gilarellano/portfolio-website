@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import {
-  ResumeIcon,
-  GithubIcon,
-  LinkedInIcon,
-  SourceCodeIcon,
-} from "@/assets/icons";
+import { GithubIcon, LinkedInIcon } from "@/assets/icons";
 import ThemeToggle from "./ThemeToggle";
 
 interface TopNavProps {
@@ -88,7 +83,7 @@ const TopNav: React.FC<TopNavProps> = ({
           />
         </div>
 
-        {/* Right: spark stats · socials · résumé */}
+        {/* Right: spark stats · socials · theme toggle */}
         <div className="flex items-center gap-5">
           {children}
           <span
@@ -110,9 +105,7 @@ const TopNav: React.FC<TopNavProps> = ({
             >
               <LinkedInIcon className="h-5 w-5 fill-secondary transition-colors hover:fill-primary" />
             </a>
-            <a>
-              <ThemeToggle />
-            </a>
+            <ThemeToggle />
           </div>
         </div>
       </nav>

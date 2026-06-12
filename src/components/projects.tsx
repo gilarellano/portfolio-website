@@ -81,10 +81,10 @@ const ListOfProjects: React.FC = () => {
                   alt={project.imgAlt}
                   width={86}
                   height={68}
-                  className="mt-1 shrink-0 w-[86px] h-[68px] rounded-custom group-hover:border-emerald-300"
+                  className="mt-1 shrink-0 w-[86px] h-[68px] rounded-custom group-hover:border-primary"
                 />
                 <div className="flex flex-col gap-y-2">
-                  <h3 className="text-primary-text text-2xl leading-tight wide:text-lg font-bold wide:group-hover:text-emerald-400">
+                  <h3 className="text-primary-text text-2xl leading-tight wide:text-lg font-bold wide:group-hover:text-primary">
                     {project.title}
                   </h3>
                   <p className="leading-normal text-secondary-text text-sm">

@@ -38,8 +38,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </h3>
         <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-600/10 px-2.5 py-0.5 font-mono text-[11px] text-primary">
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
           </span>
           Live
         </span>
