@@ -13,36 +13,19 @@ interface Project {
   technologies: string[];
 }
 
-// Lead product card. TODO: swap demo/code/screenshot/copy when the live app ships.
+// Lead product card.
 const product = {
   title: "Sash Solutions",
   tagline: "Used daily at our family window business.",
   description:
-    "A quoting app that turns a window's measurements, wood, glass, and type into an instant, accurate estimate — cutting quote prep by roughly 90%.",
+    "Quoting software for custom window shops. Build quotes for windows, doors, and new-construction units from a catalog that already knows your rates. Everything reprices live and exports as a client-ready PDF, cutting quote prep by roughly 90%.",
   imgSrc: "/sash_project_screenshot.webp",
-  imgAlt: "Sash Solutions window quoting app",
-  technologies: ["C++", "Documentation", "CI/CD"],
-  liveHref: "https://gilarellano.github.io/sash-solutions/",
-  codeHref: "https://github.com/gilarellano/sash-solutions",
+  imgAlt: "Sash Solutions quoting software landing page",
+  technologies: ["TypeScript", "Next.js", "FastAPI", "PostgreSQL", "Docker"],
+  liveHref: "https://sashsolutions.app",
 };
 
 const projects: Project[] = [
-  {
-    href: "https://github.com/gilarellano/academic-advising-tool",
-    imgSrc: "/advising_project_screenshot.webp",
-    imgAlt: "Academic Advising Tool Screenshot",
-    title: "Academic Advising Tool",
-    description:
-      "Developed and maintained a comprehensive academic advising tool, deployed on AWS EC2 and Vercel, using TypeScript, React, and Next.js. Implemented unit and integration tests with Jest, and generated code quality reports using SonarQube.",
-    technologies: [
-      "AWS",
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Jest",
-      "SonarQube",
-    ],
-  },
   {
     href: "https://gilarellano.github.io/LSTM_SpeechEmulation_Chelsea/",
     imgSrc: "/LSTM_project_screenshot.webp",
