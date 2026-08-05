@@ -38,7 +38,7 @@ const Bio = () => {
         />
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-primary-text sm:text-3xl">
-            Gilberto Arellano
+            Gilberto Arellano Lopez
           </h1>
           <p className="mt-1 text-base text-secondary-text">
             Business Owner / Developer
