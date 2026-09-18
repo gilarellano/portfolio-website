@@ -2,11 +2,15 @@ import { Bio, ListOfProjects, TopNav } from "@/components";
 
 import ClientWrapper from "@/components/ClientWrapper";
 import AreaChartWrapper from "@/components/AreaChart/AreaChartWrapper";
+import VisitorLogger from "@/components/VisitorLogger";
 import { Suspense } from "react";
 
 export default async function Home() {
   return (
     <div className="bg-background min-h-screen font-sans">
+      {/* Logs the visit to the DB — kept apart from the stats UI on purpose */}
+      <VisitorLogger />
+
       {/* Sticky top toolbar: nav + live spark stats */}
       <ClientWrapper>
         <TopNav>
