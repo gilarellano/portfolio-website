@@ -1,10 +1,13 @@
 // src/lib/metadata.ts
 import type { Metadata, Viewport } from "next";
 
-const siteUrl = process.env.BASE_URL || "http://gilber.to";
-const imageUrl = process.env.BASE_IMAGE_URL || "http://gilber.to/opengraph.png";
+// Use the final URL (https + www) — link scrapers won't follow redirects
+// on og:image, and gilber.to 308s twice before landing on www.
+const siteUrl = "https://www.gilber.to";
+const imageUrl = `${siteUrl}/opengraph.png`;
 
 export const metadataConfig: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Gilberto Arellano",
     template: "%s | Gilberto Arellano Portfolio",
@@ -27,14 +30,13 @@ export const metadataConfig: Metadata = {
     ],
     siteName: "Gilberto Arellano Portfolio",
   },
-  // twitter: {
-  //   card: 'summary_large_image',
-  //   site: '@yourtwitterhandle',
-  //   creator: '@yourtwitterhandle',
-  //   title: 'Gilberto Arellano | Software Engineer Portfolio',
-  //   description: 'Explore the projects, skills, and professional journey of Gilberto Arellano, a dedicated software engineer specializing in web development and software solutions.',
-  //   images: [imageUrl],
-  // },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gilberto Arellano | Software Engineer Portfolio",
+    description:
+      "Explore the projects, skills, and professional journey of Gilberto Arellano, a dedicated software engineer specializing in web development and software solutions.",
+    images: [`${siteUrl}/twitter.png`],
+  },
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
